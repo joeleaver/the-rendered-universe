@@ -2,8 +2,8 @@
 
 # The Rendered Universe
 
-**Twenty runnable experiments on one hypothesis: the physical universe is not
-a simulation — it is the *render output* of one.**
+**Twenty-one runnable experiments on one hypothesis: the physical universe is
+not a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
 but they are not the mechanical parts of the machine.
@@ -364,6 +364,40 @@ breathing-mode strain that LIGO rules out; and the Δc/c ladder.*</sub>
 
 — [`ripple.py`](ripple.py)
 
+### 15 · Gravity grows a tensor
+
+Part 18 killed the scalar, so part 21 builds the survivor: linearized tensor
+gravity, h<sub>ij</sub> on the lattice — in 3D, because transverse-traceless
+waves *don't exist* in two space dimensions. Three measurements, three
+verdicts reality already issued. **The ring test**: an arrived wave strains a
+ring of test separations in a pure cos 2θ pattern — two polarizations, 45°
+apart, traceless, zero longitudinal response — the pattern interferometers
+are built around (the scalar's response was all monopole). **The Birkhoff
+test**: with matter as an honestly evolving field (stress conserved by
+dynamics, not decree), a spherically breathing source leaves the strain
+channel silent to machine precision while two colliding packets — the binary
+analog — ring it at strain-per-trace efficiency 0.35: monopoles cannot ring
+a gravitational-wave detector, which is why the sky's sources are binaries.
+**The Eddington test**: with slow matter calibrating Newton (each deflection
+minus its zero-gravity control), light on the full tensor metric bends
+**1.93×** the Newtonian amount — GR says 2.00, the 1919 eclipse measured it,
+Cassini pinned it to 2×10⁻⁵ — and part 16's optical metric stands
+retro-diagnosed as Newtonian light.
+
+<div align="center">
+<img src="films/shear_ring.gif" width="560" alt="Ring response: scalar breathing vs tensor + and x">
+
+<sub>*The ring of test masses: the dead scalar breathes; the surviving tensor
+carries the + and × quadrupole patterns LIGO detects.*</sub>
+<br><br>
+<img src="films/shear.png" width="820" alt="Tensor gravity measurements">
+
+<sub>*The cos 2θ ring response, the silent monopole vs the loud quadrupole,
+and the factor-2 light bending.*</sub>
+</div>
+
+— [`shear.py`](shear.py)
+
 ---
 
 ## Every experiment
@@ -398,6 +432,7 @@ breathing-mode strain that LIGO rules out; and the Δc/c ladder.*</sub>
 | 18 | `ripple.py` | Can gravity wave — and what does the sky say? | One cone: exact (sky: <3×10⁻¹⁵ ✓); scalar polarization: killed by LIGO | 6s |
 | 19 | `firstlight.py` | What does the *real* sky say? | Anomalies reproduced from raw bytes; joint p = 0.003–0.013; no mirror rule | 47s |
 | 20 | `echo.py` | Does the signature echo in E-modes? | No echo (p 0.2–0.8) — and none was detectable: power 32% today, 98% at LiteBIRD | 26s |
+| 21 | `shear.py` | Can the surviving (tensor) gravity be built? | +/× ring patterns; silent monopole (exact); light bends 1.93× Newton (GR: 2) | 75s |
 
 ## Quickstart
 
