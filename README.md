@@ -66,6 +66,7 @@ Run them in order — each part builds on discoveries of the previous ones.
 | 14 | `sky.py` | What should the CMB show, then? | Injecting the three observed low-ℓ anomalies at published amplitudes: individually ~2σ, **jointly p = 4.3×10⁻³** under the common-origin hypothesis; an exact seed symmetry is a spectral selection rule (odd-(ℓ+m) power = 0 vs null 0.5) | 1s |
 | 15 | `renderware.py` | What does a quantum computation cost a classical engine? | The cost is the smallest *engine*, not the qubit count: independent machines' exponentials add (8×10 qubits = 128 KB; fused = 10⁷ EB projected); GHZ-22 costs 248 B until one T gate ×270,600s it; measurement halves the ledger per qubit | 3s |
 | 16 | `universal.py` | Can gravity be universal instead of chromatic? | Coupling through an optical **metric** (not a medium) restores the equivalence principle: attraction, achromatic lensing (1.9-cell spread per octave), matched Shapiro delays, and an Eötvös pass — different masses at the same velocity fall within 2.4 cells | 2s |
+| 17 | `genesis.py` | Do the three postulates actually run? | Universes from ~50 lofted bytes, space never given as input: the renderer sees only anonymous sensor IDs, yet recovers 2D geometry (dim 2.2, hidden-wiring r = 0.9) — by *intervention*, because watching fails (period-locked matter fakes wormholes, r = 0.1): in a deterministic world, space is causation | 5s |
 
 ## Repository layout
 
