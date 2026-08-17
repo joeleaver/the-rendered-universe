@@ -74,8 +74,12 @@ COLLISIONS = [
              'depend on wavelength',
          auth='in-repo part 6: transmission 55% vs 23% by wavelength; '
               'MICROSCOPE bounds EP violation < 1e-15',
-         escape='couple through geometry, not a medium (Jacobson '
-                '1995: Einstein eqs from entanglement thermodynamics)'),
+         escape='couple through geometry, not a medium — demonstrated '
+                'in-repo part 16: metric coupling is attractive, '
+                'achromatic (1.9-cell spread per octave) and '
+                'Eotvos-passing (2.4-cell composition dependence at '
+                'matched velocity); Einstein dynamics for the metric '
+                '(Jacobson 1995) remain the target'),
     dict(ax=('DISC', 'AREA'), verdict='INCOMPATIBLE',
          why='volume-voxel engines scale information with volume; '
              'regions scale with their boundary',

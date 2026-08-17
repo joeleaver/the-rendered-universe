@@ -42,7 +42,7 @@ Physics as constraint satisfaction. Verdicts: theorem, or in-repo measurement.
   - escape: the graviton lives in the EMERGENT space (bulk of holography) — gravity must be part of the render layer. The no-go that demands the architecture.
 - **EP + LOC** — medium-coupled gravity is chromatic: bend and opacity depend on wavelength.  
   *in-repo part 6: transmission 55% vs 23% by wavelength; MICROSCOPE bounds EP violation < 1e-15*
-  - escape: couple through geometry, not a medium (Jacobson 1995: Einstein eqs from entanglement thermodynamics)
+  - escape: couple through geometry, not a medium — demonstrated in-repo part 16: metric coupling is attractive, achromatic (1.9-cell spread per octave) and Eotvos-passing (2.4-cell composition dependence at matched velocity); Einstein dynamics for the metric (Jacobson 1995) remain the target
 - **DISC + AREA** — volume-voxel engines scale information with volume; regions scale with their boundary.  
   *Bekenstein 1973; 't Hooft 1993; in-repo part 10b: S vs perimeter r=1.0000*
   - escape: the engine stores ~2D-worth of state; the 3D screen is over-rendered
