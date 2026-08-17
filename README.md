@@ -64,6 +64,7 @@ Run them in order — each part builds on discoveries of the previous ones.
 | 12 | `collider.py` | What is the method itself? | Physics as constraint satisfaction: 15 axiom collisions catalogued in [`COLLIDER.md`](COLLIDER.md), 12 backed by in-repo measurements | 1s |
 | 13 | `fingerprint.py` | Can the universe's seed be detected? | Detectability of a seed's generator dies at ~40 bytes of program; statistical fingerprints launder under dynamics, **exact seed symmetries survive forever** | 3s |
 | 14 | `sky.py` | What should the CMB show, then? | Injecting the three observed low-ℓ anomalies at published amplitudes: individually ~2σ, **jointly p = 4.3×10⁻³** under the common-origin hypothesis; an exact seed symmetry is a spectral selection rule (odd-(ℓ+m) power = 0 vs null 0.5) | 1s |
+| 15 | `renderware.py` | What does a quantum computation cost a classical engine? | The cost is the smallest *engine*, not the qubit count: independent machines' exponentials add (8×10 qubits = 128 KB; fused = 10⁷ EB projected); GHZ-22 costs 248 B until one T gate ×270,600s it; measurement halves the ledger per qubit | 3s |
 
 ## Repository layout
 
