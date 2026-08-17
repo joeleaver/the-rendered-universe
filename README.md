@@ -1,16 +1,30 @@
+<div align="center">
+
 # The Rendered Universe
 
-Fourteen runnable experiments on one hypothesis: **the physical universe is not
-a simulation — it is the *render output* of one.** Particles are pixels: you
-can observe them and infer the rules of the rendering, but they are not the
-mechanical parts of the machine.
+**Seventeen runnable experiments on one hypothesis: the physical universe is not
+a simulation — it is the *render output* of one.**
 
-📄 **The paper:** [`writeup/the-rendered-universe.pdf`](writeup/the-rendered-universe.pdf)
-— a research-report treatment of everything below, with figures, a claim
-taxonomy, and an honest accounting of what is measured, what is reproduced,
-and what is conjecture.
+Particles are pixels. You can observe them and infer the rules of the rendering,
+but they are not the mechanical parts of the machine.
 
-## The idea in three layers
+<br>
+
+[**Read the paper (PDF)**](writeup/the-rendered-universe.pdf) · [Run the experiments](#quickstart) · [The axiom collider](COLLIDER.md)
+
+<br>
+
+<img src="films/genesis_birth.gif" width="420" alt="Space assembling from interventions">
+
+<sub>*The birth of space: a derived map rebuilt as interventional probes accumulate —
+filaments, then tendrils, then a coherent 2D sheet. Colors encode the hidden wiring
+the renderer was never shown.*</sub>
+
+</div>
+
+---
+
+## The idea, in three layers
 
 - **The engine** — the mechanism: a state and an update rule. It knows nothing
   about observers or display.
@@ -20,55 +34,312 @@ and what is conjecture.
 - **The render** — the observed layer: particles, fields, spacetime. Observers
   are patterns in the render.
 
-On this reading, quantum nonlocality is a chart artifact (far apart on screen
-≠ far apart in the engine), particles are render events sampled from engine
-amplitudes, geometry is the shape of the entanglement pattern, and the arrow
-of time is a property of coarse render descriptions of a reversible engine.
-Every one of those sentences is demonstrated by code in this repository.
+On this reading, quantum nonlocality is a chart artifact, particles are render
+events sampled from engine amplitudes, geometry is the shape of the entanglement
+pattern, and the arrow of time is a property of coarse render descriptions of a
+reversible engine. Every one of those sentences is demonstrated by code in this
+repository.
 
-## Quickstart
+The whole program compresses to three postulates:
 
-Requirements: Python 3.12+, `numpy`, `pillow`. Nothing else. Every experiment
-is a standalone script that prints a lab-notebook narrative and (usually)
-writes figures/films to `films/`.
+> **1.** &nbsp; U is a bijection &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *(nothing is ever lost)*
+>
+> **2.** &nbsp; d(x, y) = −log I(x : y) &nbsp; *(nearness is dependence)*
+>
+> **3.** &nbsp; K(seed) is small &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *(the beginning is written)*
 
-```bash
-python3 run.py        # start here: a universe, a firewall, and the doors
-```
+Part 17 ([`genesis.py`](genesis.py)) is the existence proof that the three lines
+*run*: universes from ~50 lofted bytes, with space, dimension, and causal order
+derived rather than supplied.
 
-## The experiments
+---
 
-Run them in order — each part builds on discoveries of the previous ones.
+## The tour
+
+### 1 · A universe with a firewall
+
+A three-line reversible rule (Critters) plus an observer that is *forbidden by an
+automated test* from seeing anything but rendered frames. The pixel-physicist
+measures c = 1.000, an exact conservation law, a particle zoo — and two "doors"
+in the sky where probes jump at 48× light speed. The doors are the chart's seam:
+places where screen adjacency and engine adjacency disagree.
+
+<div align="center">
+<img src="films/anomaly.gif" width="440" alt="A probe crossing the chart doors">
+
+<sub>*A probe particle breaking screen-space locality: it vanishes into one door
+and reappears at the other. In the engine, nothing unusual happens at all.*</sub>
+</div>
+
+The physicist then *predicts* a hidden adjacency from the door geometry and
+confirms it with a timed CHSH game: **|S| = 4 from raw cellular-automaton
+dynamics** across screen-causally isolated stations (classical bound: 2), and
+singlet statistics S = 2.84 with no signaling when an "entangled" pair is
+engine-adjacent. ER=EPR, in 128 pixels. — [`run.py`](run.py) · [`bell.py`](bell.py)
+
+### 2 · Geometry is an output
+
+Version two of the renderer derives space instead of being handed it. From causal
+structure: a wired engine shortcut appears in the derived map as a wormhole
+nobody drew. From entanglement: a massive scalar field's mutual information
+tracks true distance at **r = 0.986** — and the same construction with fermions
+gives r = 0.61, because *the derived geometry belongs to the matter, not the
+wiring beneath it*.
+
+<div align="center">
+<img src="films/entanglement_maps.png" width="820" alt="Space from entanglement">
+
+<sub>*Left: the scalar ground state renders a flat sheet. Center: one strong
+coupling between far patches folds space — a wormhole, with monogamy visibly
+decoupling its mouths. Right: disentangle a seam and space falls into two
+islands (Van Raamsdonk's argument, run as an experiment).*</sub>
+</div>
+
+Entanglement entropy of regions scales with their **perimeter** (r = 1.0000),
+not their area — holography's clue about the engine's data layout, reproduced
+exactly. — [`corner.py`](corner.py) · [`entangle.py`](entangle.py) · [`selfgrav.py`](selfgrav.py)
+
+### 3 · Matter curves the metric
+
+Give the field an inhomogeneous vacuum and re-derive the geometry with
+vacuum-calibrated rulers: local distance stretches 1.00× → 2.69× where the
+matter sits, geodesics bend around the well, and the 3D embedding of derived
+space is a literal funnel.
+
+<div align="center">
+<img src="films/curved_space.png" width="820" alt="Curved space from entanglement">
+
+<sub>*Left: the measured metric perturbation tracks the matter, with the
+shortest path (green) bending around the well. Right: derived space, embedded —
+flat without matter, a funnel with it.*</sub>
+</div>
+
+— [`curve.py`](curve.py)
+
+### 4 · Time, and the equivalence-principle discriminator
+
+Wave dynamics on the curved background confirm the static entanglement metric's
+time-of-flight predictions (a Shapiro-delay race). But gravity implemented as a
+*medium* is chromatic — bend and opacity depend on wavelength — a measured
+violation of the equivalence principle. Recoupling through an optical **metric**
+repairs it: attraction with the correct lensing sign, achromatic across an
+octave, and an Eötvös pass — **different masses at the same velocity fall
+within 2.4 cells**, with slow matter falling ~1/v² harder than light, as in GR.
+
+<div align="center">
+<img src="films/selfgravity.png" width="560" alt="Gravitational capture">
+
+<sub>*Self-gravity: the field sources its own long-range potential. Top: no
+coupling, parallel flight. Bottom: the beams fall together and merge —
+gravitational capture.*</sub>
+</div>
+
+— [`tempo.py`](tempo.py) · [`universal.py`](universal.py)
+
+### 5 · The quantum render layer
+
+Wave/particle duality as architecture: the wave is the engine object, the
+particle is the render event. One field passes through both slits; Born-sampled
+clicks assemble the fringes dot by dot, Tonomura-style.
+
+<div align="center">
+<img src="films/duality.png" width="820" alt="The double slit, engine and render">
+
+<sub>*Left: the engine's wave interferes through both slits. Right: the
+renderer's discrete clicks reproduce |wave|², dot by dot.*</sub>
+</div>
+
+What no classical render layer can fake is also measured: both-slit arrivals
+fall to **4.8% of the classical P₁+P₂ floor** at the deepest minimum, and the
+classical amplitude wall costs ×2.14 per qubit. Measurement is correlation, not
+collapse: a which-path detector kills fringe visibility 0.90 → 0.49, and
+re-sorting the *same* clicks by the detector's record restores V = 0.89–0.93.
+— [`duality.py`](duality.py) · [`nogo.py`](nogo.py) · [`eraser.py`](eraser.py)
+
+### 6 · The arrow of time
+
+The engine is a bijection, so the arrow cannot live in the laws. A matter blob's
+coarse-grained entropy climbs 3,831 → ~7,160 bits; exact reversal marches it
+back to 3,831 with **bit-perfect recovery of the microstate**; one flipped cell
+in the gas destroys the past — while the same flip in vacuum preserves it minus
+one cell. Chaos is matter-borne: history is destroyed by interaction, preserved
+by isolation. Random states of equal matter count all sit at equilibrium: the
+initial blob is one microstate in 2⁴²⁹⁵.
+
+<div align="center">
+<img src="films/arrow.png" width="740" alt="The arrow of time">
+<br><br>
+<img src="films/loschmidt.gif" width="600" alt="Loschmidt's demon at work">
+
+<sub>*Top: entropy rises, retraces exactly under reversal, and clings to
+equilibrium when one cell was flipped first. Bottom: the gas un-scrambling into
+the original blob — versus failing to, because of a single bit.*</sub>
+</div>
+
+— [`arrow.py`](arrow.py)
+
+### 7 · Observers are weather
+
+Colliding a glider with each of 456 bound states across impact parameters:
+**21% of 3,192 collisions leave a stable, isolated, changed record** — a 1-bit
+detector made of pixels, intact 400+ ticks. Observers require no extra physics.
+— [`insider.py`](insider.py)
+
+### 8 · Hiding the lattice
+
+A lattice has grain: 20% systematic light-speed anisotropy, and a boosted
+spacetime lattice shifts its statistics by 29% — every observer can measure an
+absolute velocity. A Poisson sprinkle has none: boosted statistics shift 1%,
+pure noise. Discreteness without a rest frame is possible; it costs noise, and
+noise averages away with scale. — [`sprinkle.py`](sprinkle.py) ·
+[`chiral.py`](chiral.py) (the fermion-doubling theorem, watched happening)
+
+### 9 · Constraints corner theories
+
+The ledger — reversibility, isotropy, conservation, stable vacuum — deletes
+candidate physics by pure combinatorics:
+
+| Rule space | States | Symmetry | Full space | Survivors |
+|---|---:|---:|---:|---:|
+| 2D, 2-state | 16 | D₄ (8) | 2.1×10¹³ | **32** |
+| 2D, 3-state | 81 | D₄ (8) | 10¹²⁰·⁸ | 2²⁶ |
+| 2D, 4-state | 256 | D₄ (8) | 10⁵⁰⁶·⁹ | 10³³·¹ |
+| 3D, 2-state | 256 | O<sub>h</sub> (48) | 10⁵⁰⁶·⁹ | **2²⁸** |
+
+Same 256 states, cube-group isotropy: twenty-five more orders of magnitude
+deleted — *dimension is a constraint multiplier*. Among survivors, universes
+are generic (83% of sampled ternary rules make one). The same cornering logic
+operates on real physics: anomaly cancellation leaves exactly **one** chiral
+hypercharge ray — the Standard Model's — making atoms exactly neutral; one
+generation of matter is the sixteen even-parity states of a **five-bit
+register**; and the quantum reconstruction axioms leave exactly one probability
+theory standing (complex QM, 15 = 15). — [`corner.py`](corner.py) ·
+[`frontier.py`](frontier.py) · [`ledger3d.py`](ledger3d.py) ·
+[`axioms.py`](axioms.py) · [`generation.py`](generation.py)
+
+### 10 · The prediction
+
+Two measured laws discipline the seed hypothesis: detectability of a seed's
+generator dies at ~40 bytes of program, and under chaotic dynamics
+*statistical* fingerprints launder completely while **exact seed symmetries
+survive forever**. So the observable signature class is symmetry and long-range
+alignment, in the earliest accessible layer — the CMB. A calibrated spherical
+detector battery shows the three observed low-ℓ anomalies, injected at their
+published amplitudes, read individually as ~2σ curiosities but **combine to
+p ≈ 4×10⁻³** under the common-origin hypothesis — and an exact seed symmetry
+is not a statistic but a spectral selection rule (odd-(ℓ+m) power = 0.000
+against a null of 0.5). The prediction is registered in advance for E-mode
+polarization. — [`fingerprint.py`](fingerprint.py) · [`sky.py`](sky.py)
+
+<div align="center">
+<img src="films/sky.png" width="400" alt="A synthetic anomalous sky">
+
+<sub>*A synthetic sky carrying the three observed CMB anomalies at published
+amplitudes; rings mark the aligned quadrupole and octupole axes.*</sub>
+</div>
+
+A second fork runs independently: a memory-bounded classical engine supports
+faithful quantum computation only to **n ≈ log₂(10¹²²) ≈ 400 logical qubits**
+in one coherent block — and the bound is on the largest *jointly entangled
+block*, not qubit inventory: the render-aware simulator measures independent
+machines' exponentials adding (8×10 qubits = 128 KB; fused = 10⁷ EB projected)
+and a GHZ-22 costing 248 bytes until a single T gate multiplies the ledger
+270,600-fold. — [`renderware.py`](renderware.py)
+
+### 11 · Genesis
+
+The three postulates, run: universes from ~50 bytes, with sites exposed to the
+renderer only as shuffled opaque IDs. Finding en route: *watching fails* —
+period-locked matter gives distant sensors shared rhythm, and rhythm
+masquerades as proximity (r = 0.09). The renderer must **intervene**: flip a
+site, time the arrival. Space emerges at dimension 2.2 with the hidden wiring
+recovered at r = 0.89. In a deterministic world, space is causation.
+
+<div align="center">
+<img src="films/genesis_watch_vs_poke.png" width="820" alt="Watching vs poking">
+
+<sub>*The finding in one image: what watching gives you (r = 0.09 hairball)
+versus what poking gives you (r = 0.89 sheet). Same universe, same sensors —
+the only difference is whether the observer acted.*</sub>
+<br><br>
+<img src="films/genesis.png" width="620" alt="Four worlds from fifty bytes">
+
+<sub>*Four worlds lofted from the ledger: two universes, one thin fragmented
+space, one stillborn.*</sub>
+</div>
+
+— [`genesis.py`](genesis.py)
+
+---
+
+## Every experiment
 
 | Part | Script | The question it asks | Headline result | ~time |
 |-----:|--------|----------------------|-----------------|------:|
-| 1 | `run.py` | What laws does a physicist confined to pixels discover? | c = 1.000, exact conservation, a particle zoo — and doors in the sky where particles jump at 48× light speed | 15s |
-| 2 | `bell.py` | Can chart geometry produce Bell violations? | Pixel CHSH \|S\| = 4 from raw CA dynamics across screen-causally isolated stations; singlet statistics S = 2.84 with no signaling when the pair is engine-adjacent (ER=EPR in 128px) | 6s |
-| 3 | `corner.py` | Do structural constraints corner rule space? | 2.1×10¹³ candidate rules → 32 by pure combinatorics; geometry derived from causal structure grows a wormhole nobody drew | 7s |
-| 3 | `census.py` | Which surviving rules make universes? | 9 of 32 (space + matter + particles) | 6s |
-| 3 | `frontier.py` | Does cornering scale with richer alphabets? | Ternary: 2²⁶ survivors, 83% of samples are universes — universes are generic; constraints are the scarce thing | 13s |
-| 3 | `ledger3d.py` | …and with dimension? | Same 256 states, cube-group isotropy: 2²⁸ survivors where 2D left 10³³ — dimension is a constraint multiplier | 1s |
-| 4 | `entangle.py` | Is distance just entanglement? | Mutual-information ruler tracks true distance at r = 0.986 (scalar); r = 0.61 for fermions — **geometry belongs to the matter**; wormhole and Van Raamsdonk tear demonstrated | 1s |
-| 5 | `curve.py` | Does matter curve derived space? | Vacuum-calibrated rulers stretch 2.69× where matter sits; geodesics bend around the well; 3D embedding is a literal funnel | 21s |
-| 6 | `tempo.py` | Does the static entanglement metric predict dynamics? | Shapiro-delay race confirms it — and gravity-as-medium is chromatic: the **equivalence principle is violated**, naming exactly what real gravity does differently | 2s |
-| 6 | `selfgrav.py` | Can the matter→geometry loop close? | Energy-sourced Poisson potential: parallel beams fall together and merge (capture); entanglement entropy scales with **perimeter** (r = 1.0000) — the holographic area law | 1s |
-| 7 | `duality.py` | What is wave/particle duality? | The wave is the engine object; the particle is the render event. One field through both slits; Born-sampled clicks assemble the fringes dot by dot | 1s |
-| 8 | `eraser.py` | What is measurement? | Which-path coupling kills visibility 0.90 → 0.49; sorting the *same* clicks by the detector's record restores V = 0.89–0.93. Correlation, not collapse | 8s |
-| 9 | `arrow.py` | Where does time's arrow live? | Entropy 3,831 → 7,160 bits, then *exactly* reversed to 3,831 (bit-perfect); one flipped cell in the gas destroys the past, in vacuum it survives — chaos is matter-borne; the blob is 1-in-2⁴²⁹⁵ | 3s |
-| 10 | `sprinkle.py` | Can discreteness hide from Lorentz? | A boosted lattice shifts its statistics 29% (an absolute rest frame); a boosted Poisson sprinkle shifts 1% (none) | 15s |
-| 10 | `nogo.py` | Where exactly do classical engines die? | Both-slit arrivals at 4.8% of the classical P₁+P₂ floor; the amplitude wall measured at 2.14× per qubit | 8s |
-| 10 | `insider.py` | Can an observer be made of pixels? | 21% of 3,192 glider collisions leave a stable changed record — a 1-bit detector inside the universe, intact 400+ ticks | 40s |
-| 10 | `chiral.py` | Why is the Standard Model hard to host on a lattice? | Fermion doubling watched happening (2 species in 1D, 4 in 2D, net chirality always 0); Wilson's cure breaks the symmetry chirality needs | 1s |
-| 11 | `axioms.py` | Can quantum mechanics be cornered? | Classical fails continuity, real QM fails local tomography, complex QM alone passes (15 = 15); Born rule from branch-swap symmetry | 1s |
-| 11 | `generation.py` | Can the Standard Model's charges be cornered? | Anomaly cancellation leaves exactly one chiral hypercharge ray — the SM's; atoms exactly neutral; one generation = a 5-bit register | 1s |
-| 12 | `collider.py` | What is the method itself? | Physics as constraint satisfaction: 15 axiom collisions catalogued in [`COLLIDER.md`](COLLIDER.md), 12 backed by in-repo measurements | 1s |
-| 13 | `fingerprint.py` | Can the universe's seed be detected? | Detectability of a seed's generator dies at ~40 bytes of program; statistical fingerprints launder under dynamics, **exact seed symmetries survive forever** | 3s |
-| 14 | `sky.py` | What should the CMB show, then? | Injecting the three observed low-ℓ anomalies at published amplitudes: individually ~2σ, **jointly p = 4.3×10⁻³** under the common-origin hypothesis; an exact seed symmetry is a spectral selection rule (odd-(ℓ+m) power = 0 vs null 0.5) | 1s |
-| 15 | `renderware.py` | What does a quantum computation cost a classical engine? | The cost is the smallest *engine*, not the qubit count: independent machines' exponentials add (8×10 qubits = 128 KB; fused = 10⁷ EB projected); GHZ-22 costs 248 B until one T gate ×270,600s it; measurement halves the ledger per qubit | 3s |
-| 16 | `universal.py` | Can gravity be universal instead of chromatic? | Coupling through an optical **metric** (not a medium) restores the equivalence principle: attraction, achromatic lensing (1.9-cell spread per octave), matched Shapiro delays, and an Eötvös pass — different masses at the same velocity fall within 2.4 cells | 2s |
-| 17 | `genesis.py` | Do the three postulates actually run? | Universes from ~50 lofted bytes, space never given as input: the renderer sees only anonymous sensor IDs, yet recovers 2D geometry (dim 2.2, hidden-wiring r = 0.9) — by *intervention*, because watching fails (period-locked matter fakes wormholes, r = 0.1): in a deterministic world, space is causation | 5s |
+| 1 | `run.py` | What laws does a physicist confined to pixels discover? | c = 1.000, exact conservation, a particle zoo — and doors in the sky | 15s |
+| 2 | `bell.py` | Can chart geometry produce Bell violations? | Pixel CHSH \|S\| = 4; singlet S = 2.84 with no signaling (ER=EPR in 128px) | 6s |
+| 3 | `corner.py` | Do structural constraints corner rule space? | 2.1×10¹³ rules → 32; a derived wormhole nobody drew | 7s |
+| 3 | `census.py` | Which surviving rules make universes? | 9 of 32 | 6s |
+| 3 | `frontier.py` | Does cornering scale with richer alphabets? | 2²⁶ ternary survivors; 83% of samples are universes | 13s |
+| 3 | `ledger3d.py` | …and with dimension? | Same 256 states, cube group: 2²⁸ where 2D left 10³³ | 1s |
+| 4 | `entangle.py` | Is distance just entanglement? | MI ruler r = 0.986 (scalar), r = 0.61 (fermions); wormhole; tear | 1s |
+| 5 | `curve.py` | Does matter curve derived space? | Rulers stretch 2.69×; geodesics bend; a literal funnel | 21s |
+| 6 | `tempo.py` | Does the static metric predict dynamics? | Shapiro race confirms; medium gravity violates the EP | 2s |
+| 6 | `selfgrav.py` | Can the matter→geometry loop close? | Capture through geometry; area law r = 1.0000 | 1s |
+| 7 | `duality.py` | What is wave/particle duality? | Engine wave + render clicks; fringes dot by dot | 1s |
+| 8 | `eraser.py` | What is measurement? | V 0.90 → 0.49; record-sorting restores 0.89–0.93 | 8s |
+| 9 | `arrow.py` | Where does time's arrow live? | 3,831 → 7,160 bits, exactly reversed; 1-in-2⁴²⁹⁵ seed | 3s |
+| 10 | `sprinkle.py` | Can discreteness hide from Lorentz? | Boosted lattice shifts 29%; sprinkle 1% | 15s |
+| 10 | `nogo.py` | Where do classical engines die? | 4.8% interference deficit; 2.14×/qubit wall | 8s |
+| 10 | `insider.py` | Can an observer be made of pixels? | 21% of collisions leave stable records | 40s |
+| 10 | `chiral.py` | Why is the SM hard to host on a lattice? | Fermion doubling watched; Wilson's tradeoff | 1s |
+| 11 | `axioms.py` | Can quantum mechanics be cornered? | Complex QM uniquely passes (15 = 15); Born from swaps | 1s |
+| 11 | `generation.py` | Can the SM's charges be cornered? | One chiral hypercharge ray; a 5-bit register | 1s |
+| 12 | `collider.py` | What is the method itself? | 15 axiom collisions, 12 measured in-repo → [`COLLIDER.md`](COLLIDER.md) | 1s |
+| 13 | `fingerprint.py` | Can the universe's seed be detected? | Ceiling ~40 bytes; symmetries survive, statistics launder | 3s |
+| 14 | `sky.py` | What should the CMB show, then? | Anomalies jointly p = 4.3×10⁻³; a spectral selection rule | 1s |
+| 15 | `renderware.py` | What does quantum computation cost a classical engine? | The smallest engine, not the qubit count | 3s |
+| 16 | `universal.py` | Can gravity be universal instead of chromatic? | Metric coupling: achromatic, attractive, Eötvös-passing | 2s |
+| 17 | `genesis.py` | Do the three postulates actually run? | Universes from ~50 bytes; space by intervention (r = 0.89) | 5s |
 
-## Repository layout
+## Quickstart
+
+Requirements: Python 3.12+, `numpy`, `pillow`. Nothing else. Every experiment is
+a standalone script that prints a lab-notebook narrative and writes its figures
+and films to [`films/`](films/).
+
+```bash
+python3 run.py        # start here: a universe, a firewall, and the doors
+python3 genesis.py    # or here: three postulates, universes as output
+```
+
+## The paper
+
+**[The Rendered Universe (PDF)](writeup/the-rendered-universe.pdf)** — the full
+research report: abstract, claim taxonomy, sixteen figures, an
+objections-and-replies section, and a reproducibility appendix. The HTML source
+is [`writeup/paper.html`](writeup/paper.html).
+
+Claims are classified throughout: **Class A** (measured — novel results of
+these toys), **Class B** (known physics reproduced inside the architecture,
+with installed components disclosed), **Class C** (conjecture, flagged as
+such). What is *not* claimed: QM derived from beneath (Bell and PBR close that
+road — it is cornered from axioms instead), the Standard Model derived (its
+charges are cornered), or the seed identified (only its class — compressible —
+is argued).
+
+## How honest is this?
+
+1. **The epistemic firewall** — observer code cannot import the engine;
+   [`tests/test_firewall.py`](tests/test_firewall.py) fails the build otherwise.
+2. **Calibrate on a known universe** — every instrument is validated against a
+   system whose answer is known before being trusted. Several instruments in
+   this program refused to run until their own validators passed.
+3. **Installed ≠ emergent** — where quantum statistics were installed rather
+   than derived, the code and paper say so plainly.
+
+<details>
+<summary><b>Repository layout</b></summary>
 
 ```
 engine/       the mechanism: reversible block CA (any k-state rule), scalar
@@ -80,32 +351,13 @@ physicist/    the observer: forbidden by tests/test_firewall.py from
 observatory/  research instruments: causal geometry, Gaussian-state
               entanglement, curved-space rulers, spherical harmonics
 rulespace/    exact orbit combinatorics over spaces of possible physics
+tools/        film generators
 films/        every figure and film, regenerated by the scripts
 writeup/      the paper (HTML source + PDF)
 COLLIDER.md   the axiom collision matrix
 ```
 
-## How honest is this?
-
-Deliberately. Three rules were enforced throughout, and the paper tags every
-claim accordingly:
-
-1. **The epistemic firewall** — observer code cannot import the engine; all
-   "discoveries" come from rendered frames (`tests/test_firewall.py` fails the
-   build otherwise).
-2. **Calibrate on a known universe** — every instrument (dimension estimators,
-   visibility, detection significance) is validated against a system whose
-   answer is known before being trusted. Several results were retracted and
-   corrected mid-program when calibration failed; the scripts contain the
-   fixed versions and the paper narrates the failures.
-3. **Installed ≠ emergent** — where quantum statistics were installed rather
-   than derived (singlet law in part 2, Born sampling in part 7), the code
-   and paper say so. What those parts demonstrate is architecture, not
-   emergence.
-
-What is *not* claimed: QM derived from beneath (Bell/PBR close that road — we
-corner it from axioms instead), the Standard Model derived (we corner its
-charges), or the seed identified (only its class — compressible — is argued).
+</details>
 
 ## License
 
