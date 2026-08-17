@@ -2,7 +2,7 @@
 
 # The Rendered Universe
 
-**Nineteen runnable experiments on one hypothesis: the physical universe is not
+**Twenty runnable experiments on one hypothesis: the physical universe is not
 a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
@@ -336,6 +336,34 @@ today, 98% when LiteBIRD-class data arrives.*</sub>
 [`tools/fetch_pol.py`](tools/fetch_pol.py) into
 [`data/realsky_pol.npz`](data/realsky_pol.npz)
 
+### 14 · The races the sky already ran
+
+Part 18 (the long-reserved slot) gives the metric its own wave equation — same
+lattice, same stencil, same tick as matter — and collects the verdicts reality
+has already delivered on the architecture's variants. **The one-cone race**: a
+photon and a metric pulse from one event arrive *bit-identically* — one
+substrate means one dispersion relation, an identity, not a tuning — while a
+deliberately built two-substrate engine (gravity on its own stencil) loses by
+half the track. The sky ran this race: GW170817's gamma rays trailed the chirp
+by 1.7 s across 40 Mpc, |Δc/c| < 3×10⁻¹⁵ — two-substrate engines dead by
+fourteen orders of magnitude. **The polarization race, which our own variant
+loses**: a scalar metric strains rulers *along* the wave as much as across it
+(measured: longitudinal/transverse = 0.94; GR says 0), and LIGO-Virgo favor
+pure tensor — so scalar-metric render gravity is excluded by the real sky,
+and the program provably owes a tensor metric. The sky has now executed two
+variants (lattice substrate in part 10, scalar metric here); what survives is
+sprinkle-like discreteness plus tensor-metric gravity.
+
+<div align="center">
+<img src="films/ripple.png" width="820" alt="Toy gravitational waves and the sky's verdicts">
+
+<sub>*A radiated metric ripple (isotropic, speed c); the race — photon and
+metric pulse overlapping exactly, the two-substrate engine losing; the
+breathing-mode strain that LIGO rules out; and the Δc/c ladder.*</sub>
+</div>
+
+— [`ripple.py`](ripple.py)
+
 ---
 
 ## Every experiment
@@ -367,6 +395,7 @@ today, 98% when LiteBIRD-class data arrives.*</sub>
 | 15 | `renderware.py` | What does quantum computation cost a classical engine? | The smallest engine, not the qubit count | 3s |
 | 16 | `universal.py` | Can gravity be universal instead of chromatic? | Metric coupling: achromatic, attractive, Eötvös-passing | 2s |
 | 17 | `genesis.py` | Do the three postulates actually run? | Universes from ~50 bytes; space by intervention (r = 0.89) | 5s |
+| 18 | `ripple.py` | Can gravity wave — and what does the sky say? | One cone: exact (sky: <3×10⁻¹⁵ ✓); scalar polarization: killed by LIGO | 6s |
 | 19 | `firstlight.py` | What does the *real* sky say? | Anomalies reproduced from raw bytes; joint p = 0.003–0.013; no mirror rule | 47s |
 | 20 | `echo.py` | Does the signature echo in E-modes? | No echo (p 0.2–0.8) — and none was detectable: power 32% today, 98% at LiteBIRD | 26s |
 
