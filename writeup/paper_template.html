@@ -1,0 +1,187 @@
+<title>The Rendered Universe</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --surface: #ffffff; --ink: #1b1e26; --muted: #5b6270;
+    --accent: #2a5fc4; --warm: #b0521e; --rule: #d9dce2; --figbg: #0e0e12;
+    --code: #eceef2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101116; --surface: #16171d; --ink: #e4e3db; --muted: #99a0ac;
+      --accent: #5b96e8; --warm: #e0824f; --rule: #2a2c35; --figbg: #0e0e12;
+      --code: #1d1f27;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101116; --surface: #16171d; --ink: #e4e3db; --muted: #99a0ac;
+    --accent: #5b96e8; --warm: #e0824f; --rule: #2a2c35; --figbg: #0e0e12;
+    --code: #1d1f27;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+    font-size: 17px; line-height: 1.65;
+  }
+  .wrap { max-width: 46rem; margin: 0 auto; padding: 4rem 1.25rem 6rem; }
+  .sans { font-family: "Avenir Next", Seravek, "Segoe UI", system-ui, sans-serif; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.86em; }
+  header { border-bottom: 1px solid var(--rule); padding-bottom: 1.6rem; margin-bottom: 2.2rem; }
+  .eyebrow { font-family: "Avenir Next", Seravek, "Segoe UI", system-ui, sans-serif;
+    text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem;
+    color: var(--accent); margin: 0 0 0.9rem; }
+  h1 { font-size: 2.35rem; line-height: 1.15; margin: 0 0 0.7rem; text-wrap: balance; font-weight: 700; }
+  .byline { color: var(--muted); font-family: "Avenir Next", Seravek, "Segoe UI", system-ui, sans-serif;
+    font-size: 0.9rem; margin: 0; }
+  h2 { font-size: 1.42rem; margin: 2.8rem 0 0.8rem; line-height: 1.25; text-wrap: balance; }
+  h2 .n, h3 .n { color: var(--accent); font-family: "Avenir Next", Seravek, "Segoe UI", system-ui, sans-serif;
+    font-weight: 600; font-size: 0.85em; margin-right: 0.55rem; }
+  h3 { font-size: 1.08rem; margin: 1.9rem 0 0.5rem; }
+  p { margin: 0 0 1rem; }
+  a { color: var(--accent); }
+  .abstract { border: 1px solid var(--rule); background: var(--surface);
+    padding: 1.3rem 1.5rem; margin: 0 0 1rem; }
+  .abstract .lbl { font-family: "Avenir Next", Seravek, "Segoe UI", system-ui, sans-serif;
+    text-transform: uppercase; letter-spacing: 0.13em; font-size: 0.7rem;
+    color: var(--muted); display: block; margin-bottom: 0.6rem; }
+  .abstract p { font-size: 0.95rem; margin: 0; }
+  figure { margin: 1.6rem 0; }
+  figure .frame { background: var(--figbg); border: 1px solid var(--rule);
+    padding: 0.6rem; text-align: center; overflow-x: auto; }
+  figure img { max-width: 100%; height: auto; display: inline-block; }
+  figcaption { font-family: "Avenir Next", Seravek, "Segoe UI", system-ui, sans-serif;
+    font-size: 0.82rem; color: var(--muted); margin-top: 0.6rem; line-height: 1.5; }
+  figcaption b { color: var(--ink); }
+  table { width: 100%; border-collapse: collapse; margin: 1.2rem 0;
+    font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+  th { font-family: "Avenir Next", Seravek, "Segoe UI", system-ui, sans-serif;
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--muted); text-align: left; font-weight: 600;
+    border-bottom: 1px solid var(--ink); padding: 0.35rem 0.7rem 0.35rem 0; }
+  td { border-bottom: 1px solid var(--rule); padding: 0.42rem 0.7rem 0.42rem 0;
+    vertical-align: top; }
+  td.r, th.r { text-align: right; padding-right: 0; }
+  .tablebox { overflow-x: auto; }
+  .honest { border-left: 3px solid var(--warm); padding: 0.15rem 0 0.15rem 1.1rem;
+    margin: 1.3rem 0; }
+  .honest p { margin: 0 0 0.5rem; }
+  .honest .lbl { font-family: "Avenir Next", Seravek, "Segoe UI", system-ui, sans-serif;
+    text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.68rem;
+    color: var(--warm); display: block; margin-bottom: 0.25rem; font-weight: 600; }
+  code { background: var(--code); padding: 0.08em 0.35em; border-radius: 3px;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.85em; }
+  .claims td:first-child { white-space: nowrap; font-weight: 600; }
+  footer { margin-top: 3.5rem; border-top: 1px solid var(--rule); padding-top: 1.4rem;
+    color: var(--muted); font-size: 0.88rem; }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+</style>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">Research report · v1 · August 2026</p>
+  <h1>The Rendered Universe</h1>
+  <p class="byline">Joe Leaver, with Claude (Anthropic) &nbsp;·&nbsp; fourteen runnable experiments on the hypothesis that physical reality is the output layer of a computation</p>
+</header>
+
+<div class="abstract">
+<span class="lbl">Abstract</span>
+<p>We investigate the hypothesis that the physical universe is not itself a simulation but the <em>rendering</em> of one: observed degrees of freedom (particles, spacetime events) are output, not mechanism, related to an underlying engine by a projection ("chart") that need not preserve adjacency. We make the hypothesis operational in a sequence of toy models with an architecturally enforced separation between engine, renderer, and observer, and use them to (i)&nbsp;reproduce quantum nonlocality, wave–particle duality, decoherence, and the thermodynamic arrow as render-layer phenomena; (ii)&nbsp;demonstrate a constraint-based route to theory selection, in which structural axioms delete candidate physics by many orders of magnitude (2.1×10¹³&nbsp;→&nbsp;32 rules in 2D; 10⁵⁰⁷&nbsp;→&nbsp;2²⁸ in 3D), anomaly cancellation fixes Standard Model hypercharges uniquely, and reconstruction axioms select complex quantum mechanics uniquely; (iii)&nbsp;derive spatial geometry, curvature, and time-of-flight physics from entanglement structure; and (iv)&nbsp;extract a falsifiable observational program: dynamically protected <em>seed symmetries</em> are the only initial-condition fingerprints that survive chaotic evolution, predicting symmetry-class structure in the primordial sky. A calibrated spherical detector battery shows that the three observed low-ℓ CMB anomalies, injected at published amplitudes, read individually as ~2σ curiosities but combine to p&nbsp;≈&nbsp;4×10⁻³ under the common-origin hypothesis. We state plainly what is demonstrated, what is reproduced, and what remains conjecture.</p>
+</div>
+
+<h2><span class="n">1</span>The hypothesis</h2>
+<p>The familiar simulation hypothesis treats observed reality as the computation itself, and inherits awkward questions about computing every particle. We study a sharper variant: the universe is the <em>render output</em> of a computation. Three layers are distinguished:</p>
+<p><b>The engine</b> — the mechanism: a state and an update rule. Nothing in the engine refers to observers or display. <b>The chart</b> — a fixed projection from engine degrees of freedom to observed ones. Crucially, the chart is a bijection but not an isometry: adjacency in the render (what we call "space") need not be adjacency in the engine. <b>The render</b> — the observed layer: particles, fields, spacetime events. Observers, including instruments and physicists, are patterns in the render.</p>
+<p>On this reading, several notorious features of physics become architectural rather than mysterious: nonlocal correlations are chart artifacts (things far apart on screen may be adjacent in the engine); particles are render events sampled from engine amplitudes; the arrow of time is a property of coarse render descriptions of a reversible engine. The hypothesis has a respectable lineage — Zuse's <i>Rechnender Raum</i> (1969), Fredkin's digital physics, Wheeler's "it from bit," 't&nbsp;Hooft's cellular-automaton interpretation of quantum mechanics, Wolfram's hypergraph program — and, we will argue, its strongest support comes from mainstream results it did not originate: holography, entanglement-derived geometry (Ryu–Takayanagi, Van&nbsp;Raamsdonk), the Weinberg–Witten theorem, and the operational reconstructions of quantum theory.</p>
+
+<h2><span class="n">2</span>Method and claim taxonomy</h2>
+<p>All results below are runnable Python experiments in a single repository (~/dev/toe; Appendix&nbsp;A). Two methodological rules were enforced throughout. First, an <em>epistemic firewall</em>: observer code is forbidden (by an automated test) from importing engine or renderer internals; everything an in-model physicist knows is inferred from rendered frames. Second, <em>instrument calibration on known universes</em>: every estimator (dimension, visibility, detection significance) is validated against a system whose answer is independently known before being trusted on a new one. Several early results in this program were retracted mid-stream when calibration failed; the corrected versions are what appear here.</p>
+<p>Claims are classified explicitly:</p>
+<div class="tablebox"><table class="claims">
+<tr><th>Class</th><th>Meaning</th></tr>
+<tr><td>A — measured</td><td>A quantitative result of these toy models, novel at least in presentation, reproducible from the repository.</td></tr>
+<tr><td>B — reproduced</td><td>Known physics or known theorems, re-derived or demonstrated inside the render architecture to show the architecture is compatible with them.</td></tr>
+<tr><td>C — conjecture</td><td>Interpretive claims of the render program itself. Flagged wherever they occur.</td></tr>
+</table></div>
+
+<h2><span class="n">3</span>A universe with a firewall: laws and chart artifacts</h2>
+<p>The first engine is the Critters block cellular automaton (Toffoli–Margolus): a 2×2-block rule of three lines, exactly reversible, exactly conserving. A physicist module, restricted to rendered frames, empirically recovers a maximum signal speed (c&nbsp;=&nbsp;1.000 cells/tick), an exact conservation law, a particle zoo (bound states from all 456 small seeds; free 4-cell gliders at 0.5c born only in collision debris), and square-group isotropy. <span class="mono">[Class A/B]</span></p>
+<p>The renderer's chart contains a secret: two rectangles of engine space exchange screen positions. Ballistic surveys locate the anomaly (particles teleporting at ~48× the apparent light speed between two fixed "doors"), and the physicist infers the chart. The inferred chart then makes a prediction: a screen region <em>adjacent to nothing unusual</em> should be engine-adjacent to the interior of the far door. Playing a timed CHSH game across that gap — readout completed before any screen-speed signal could connect the stations — yields |S|&nbsp;=&nbsp;4 from raw cellular-automaton dynamics with no tuned correlations (the classical/screen-local bound is 2), and exactly 2 at control placements. <span class="mono">[Class A]</span> A second experiment reproduces the physically relevant case: singlet statistics (S&nbsp;=&nbsp;2.837&nbsp;±&nbsp;0.037&nbsp;≈&nbsp;2√2) with marginals verified flat (no signaling) when the pair's two ends are engine-adjacent, versus S&nbsp;=&nbsp;2.05 when engine-separated. Here the singlet law was <em>installed</em>, not derived; the demonstrated point is architectural — engine adjacency, not screen distance, controls the correlations. <span class="mono">[Class B, installation disclosed]</span> This is a toy-scale ER=EPR: "entangled and far apart on screen" = "one object in the engine."</p>
+
+<h2><span class="n">4</span>Constraints corner theories</h2>
+<p>The program's central methodological bet is that one does not <em>search</em> for the engine's rule; one writes down structural constraints ("the ledger") and lets them delete rule space. This is measurable.</p>
+<div class="tablebox"><table>
+<tr><th>Rule space</th><th class="r">States</th><th class="r">Symmetry</th><th class="r">Full space</th><th class="r">Survivors</th></tr>
+<tr><td>2D, 2-state blocks</td><td class="r">16</td><td class="r">D₄ (8)</td><td class="r">2.1×10¹³</td><td class="r">32</td></tr>
+<tr><td>2D, 3-state</td><td class="r">81</td><td class="r">D₄ (8)</td><td class="r">10¹²⁰·⁸</td><td class="r">2²⁶</td></tr>
+<tr><td>2D, 4-state</td><td class="r">256</td><td class="r">D₄ (8)</td><td class="r">10⁵⁰⁶·⁹</td><td class="r">10³³·¹</td></tr>
+<tr><td>3D, 2-state</td><td class="r">256</td><td class="r">O<sub>h</sub> (48)</td><td class="r">10⁵⁰⁶·⁹</td><td class="r">2²⁸</td></tr>
+</table></div>
+<p>The constraints are only reversibility, isotropy, exact conservation, and a stable vacuum; the counts are exact orbit combinatorics (validated against brute-force enumeration at k=2). ("Stable vacuum" means the empty state is stationary under the rule — the discrete analog of the quantum vacuum being an energy eigenstate. This does not contradict vacuum <em>fluctuations</em>, which are equal-time correlations of a stationary ground state rather than events; §5 builds geometry out of exactly those vacuum correlations. Real particles emerge from a vacuum only when it is driven — moving mirrors, strong fields, horizons — which is physics done <em>to</em> the vacuum, not instability of it.) Two findings: with identical raw state (256 block states), upgrading from square to cube symmetry deletes twenty-five additional orders of magnitude — <em>dimension is a constraint multiplier</em>; and among survivors, a dynamical census (causal-probe dimension, propagation, particle content) finds universes are not rare (9/32 of 2D binary survivors; 83% of sampled ternary survivors support 2D space with free particles). Universes are cheap; the expensive object is the constraint set. <span class="mono">[Class A]</span></p>
+<p>The same cornering logic operates on real physics. Gauge anomaly cancellation, imposed on one generation of chiral fermions over all rational hypercharge assignments, leaves exactly one solution ray up to normalization and u/d relabeling: the Standard Model's (Y&nbsp;=&nbsp;1/6,&nbsp;−2/3,&nbsp;1/3,&nbsp;−1/2,&nbsp;1), forcing electric charge quantization and exact proton–electron charge balance. <span class="mono">[Class B]</span> One generation of matter is, further, the sixteen even-parity states of a five-bit register (three color bits, two weak bits; the SO(10) half-spinor), with every hypercharge generated by Y&nbsp;=&nbsp;(1/6)Σ<sub>color</sub>&nbsp;−&nbsp;(1/4)Σ<sub>weak</sub> — an observation due to grand unification, recomputed here in full, and congenial to a program that expects seeds to compress. <span class="mono">[Class B]</span></p>
+<p>Quantum mechanics itself is cornered rather than derived. Following the operational reconstructions (Hardy 2001; Chiribella–D'Ariano–Perinotti 2011; Masanes–Müller 2011), we compute the fork explicitly: classical probability fails continuity of reversible dynamics; real-Hilbert-space QM fails local tomography (a two-rebit state carries 9 parameters, local statistics fix 8); quaternionic QM overshoots (27 vs 35); complex QM alone passes (15&nbsp;=&nbsp;15). Given entangled states, the Born rule follows from branch-swap symmetry (Zurek's envariance), verified numerically. <span class="mono">[Class B]</span> The render program's contribution is an interpretation of the axioms: purification <em>is</em> the engine/render split; local tomography is "the render is locally readable"; reversibility is the engine's bookkeeping. <span class="mono">[Class C]</span></p>
+
+<h2><span class="n">5</span>Geometry is an output</h2>
+<p>Version one of the renderer was handed a chart; version two derives geometry. Two independent constructions agree:</p>
+<p><b>Causal structure.</b> Defining distance by first-influence times of a flipped cell in a thermal medium (licensed by Malament's theorem: causal order fixes the metric up to scale), the derived map of an honest engine is a clean 2D mesh; wiring a shortcut into the engine's dynamics produces a derived map with a wormhole nobody drew — causal distance 8.0 versus 40.8 ticks for the same landmark pair. <span class="mono">[Class A]</span></p>
+<figure><div class="frame">IMG:maps</div>
+<figcaption><b>Figure 1.</b> Geometry derived purely from causal structure (no cell index used as a position). Left: honest engine → flat mesh. Right: engine with a wired shortcut → the derived metric grows a wormhole.</figcaption></figure>
+<p><b>Entanglement.</b> For a massive scalar field in its Gaussian ground state (Peschel correlation-matrix methods, exact), the mutual-information ruler d&nbsp;=&nbsp;−log&nbsp;I tracks true separation at Pearson r&nbsp;=&nbsp;0.986. A single strong coupling between far patches collapses their derived distance from 14.0 to 0.14 as coupling grows, while monogamy visibly decouples the wormhole mouths from their own neighborhoods; cutting a seam of couplings drops all 324 cross-seam mutual informations to the measurement floor and derived space falls into two islands (Van&nbsp;Raamsdonk's argument, run as an experiment). <span class="mono">[Class A/B]</span> Notably, the same construction with staggered fermions yields r&nbsp;=&nbsp;0.61: Dirac-valley interference splits the landmarks into loosely stitched sublattice sheets. <em>The derived geometry belongs to the matter, not to the wiring beneath it</em> — background independence, experienced from inside a toy. <span class="mono">[Class A]</span></p>
+<figure><div class="frame">IMG:entangle</div>
+<figcaption><b>Figure 2.</b> Space from entanglement (scalar ground state). Left: flat derived mesh. Center: a wormhole coupling folds derived space. Right: a disentangled seam tears it in two.</figcaption></figure>
+<p>Entanglement entropy of regions scales with their <em>perimeter</em> (r&nbsp;=&nbsp;1.0000; S/4ℓ&nbsp;→&nbsp;0.060) and not area — the holographic clue about engine data layout, reproduced exactly. <span class="mono">[Class B]</span> With an inhomogeneous mass profile (a Gaussian "star"), vacuum-calibrated rulers stretch 1.00×→2.69× monotonically in the matter density, shortest paths detour around the well, and the 3D embedding of derived space is a literal funnel. <span class="mono">[Class A]</span></p>
+<figure><div class="frame">IMG:curved</div>
+<figcaption><b>Figure 3.</b> Curved space from entanglement. Left: the measured metric perturbation tracks the matter, with the geodesic (green) bending around the well. Center/right: derived space embedded in 3D — flat without matter, a funnel with it.</figcaption></figure>
+
+<h2><span class="n">6</span>Time, and the equivalence-principle discriminator</h2>
+<p>Giving the field dynamics (lattice Klein–Gordon) turns the static geometry into predictions. In a two-lane "Shapiro race," the packet through the star arrives late by amounts tracking the wave-optics group-delay integral, with the entanglement metric predicting the delay up to dispersion corrections. Deflection tests show beams bending <em>away</em> from the star — consistent with the derived spatial geometry — but with wavelength-dependent bend and opacity (55% vs 23% transmission across one octave). <span class="mono">[Class A]</span></p>
+<div class="honest"><span class="lbl">Honest accounting</span>
+<p>This is the sharpest negative result in the program: <b>any medium-coupled implementation of gravity is chromatic and violates the equivalence principle</b>, which experiment bounds at the 10⁻¹⁵ level (MICROSCOPE). Real gravity couples through a universal geometry, not a medium. Jacobson's 1995 derivation of the Einstein equations from entanglement thermodynamics indicates what the render layer must instead achieve; our self-gravity closure (below) does not yet achieve it.</p></div>
+<p>Closing the matter→geometry loop nevertheless produces gravity-like phenomenology: coupling the local mass to a long-range (screened-Poisson) potential of the field's own energy density makes parallel wave packets fall toward each other and, above a threshold, merge into a single self-trapped filament — capture occurring earlier at stronger coupling. Instructive failures en route: a Gaussian-blur (short-range) coupling produces no attraction at all (gravity must be long-range), and relativistic packets barely couple while slow heavy packets fall hard (the correct nonrelativistic limit, emergent). <span class="mono">[Class A]</span></p>
+<figure><div class="frame">IMG:selfgrav</div>
+<figcaption><b>Figure 4.</b> Self-gravity: long-exposure streaks of two packets. Top: no coupling, parallel flight. Bottom: energy-sourced potential — the beams fall together and merge (gravitational capture).</figcaption></figure>
+
+<h2><span class="n">7</span>The quantum render layer</h2>
+<p>Wave–particle duality, in this architecture, is a type distinction rather than a paradox: the wave is the engine object; the particle is the render event. A double slit run in the wave engine shows one field passing through both slits (five fringe maxima; spacing 14.5 cells against the textbook λL/d&nbsp;=&nbsp;12.2 with near-field corrections), while a Born-rule click sampler at the screen assembles the same fringes dot by dot, Tonomura-style. The Born rule is installed here (as in §3); the demonstration is architectural. <span class="mono">[Class B, installation disclosed]</span></p>
+<figure><div class="frame">IMG:duality</div>
+<figcaption><b>Figure 5.</b> Duality as architecture. Left: the engine's wave interferes through both slits. Right: the renderer's discrete clicks reproduce |wave|² statistically.</figcaption></figure>
+<p>What no classical render layer can do is also quantified: with both slits open, arrivals at the deepest minimum fall to <b>4.8% of the sum of the single-slit rates</b> — below each single slit alone at 10 of 36 central positions. Any engine in which each particle takes one slit, without slit-to-slit action at a distance, is bounded below by P₁+P₂ everywhere. Amplitudes cancel; probabilities cannot. The classical cost of faking it is likewise measured: statevector simulation cost multiplies by 2.14 per added qubit (10¹⁹ years by 100 qubits). <span class="mono">[Class A/B]</span></p>
+<p>Measurement completes the picture. A which-path detector (a phase-kicking cell in one slit) degrades fringe visibility 0.90&nbsp;→&nbsp;0.49 as its coupling grows, tracking a phase-average prediction; and the washed-out ensemble, <em>re-sorted by the detector's record</em>, recovers visibility 0.89–0.93 per bin with fringes shifted per recorded kick. Nothing collapses; coherence moves into correlation, and conditioning on the record retrieves it. <span class="mono">[Class A/B]</span></p>
+<figure><div class="frame">IMG:eraser</div>
+<figcaption><b>Figure 6.</b> Measurement without collapse. Top to bottom: no detector (fringes); detector on, all shots (washed out); the same shots sorted by the detector's record (fringes return, shifted per record).</figcaption></figure>
+
+<h2><span class="n">8</span>The arrow of time, and observers as weather</h2>
+<p>The engine is a bijection, so the arrow cannot live in the laws. Coarse-graining the render into blocks and counting Boltzmann microstates: a 2,086-particle blob's entropy climbs 3,831&nbsp;→&nbsp;~7,160 bits; exact reversal marches it back to 3,831 with bit-perfect recovery of the microstate; flipping one cell in the gas before reversing corrupts 21% of the torus and the past is gone. Where the flip lands matters completely: in vacuum, the perturbation curls into a stationary bound state and the past survives minus one cell. <b>Chaos in this universe is matter-borne</b>: histories are destroyed by interaction and preserved by isolation — the entropy arrow and decoherence as one phenomenon. Random states of equal matter count all sit at S&nbsp;=&nbsp;8,126&nbsp;±&nbsp;16; the initial blob is one microstate in 2⁴²⁹⁵. <span class="mono">[Class A]</span></p>
+<figure><div class="frame">IMG:arrow</div>
+<figcaption><b>Figure 7.</b> The arrow is not in the laws. Entropy rises (blue), retraces exactly under reversal (green), and clings to equilibrium when one cell was flipped first (orange).</figcaption></figure>
+<p>Observers require no extra physics. Colliding a glider with each of 456 bound states across impact parameters, <b>21% of 3,192 collisions leave a stable, isolated, changed local structure</b> — a one-bit record written by a physical event, intact 400+ ticks in isolation. Detectors are weather. <span class="mono">[Class A]</span></p>
+
+<h2><span class="n">9</span>Hiding the lattice</h2>
+<p>The loudest structural objection — grids have preferred directions; Lorentz symmetry is exact — has a known escape (causal sets), demonstrated here quantitatively. A lattice's light-speed anisotropy is systematic (20% at wavelength 4, zero variance) and a boosted spacetime lattice shifts its nearest-neighbor statistics by 29% with zero variance: every observer measures an absolute velocity. A Poisson sprinkle's anisotropy is statistical (direction-random, inside its own noise) and its boosted statistics shift by 1%: an area-preserving map of a Poisson process is the same process. Discreteness without grain costs noise — waves on naive random graphs scatter — but noise averages away with scale separation, and nature's is 10²⁰. <span class="mono">[Class A/B]</span></p>
+
+<h2><span class="n">10</span>The axiom collider</h2>
+<p>The program's method, made explicit: physics as constraint satisfaction over "obvious" axioms. Fifteen collisions are catalogued (repository file <code>COLLIDER.md</code>), each Compatible, Converging, Incompatible, or Open, with authority cited — a named no-go theorem or an in-repo measurement (12 of 15). The no-go theorems are the fossil record of collisions past; the black-hole information paradox is one in progress. Two entries deserve emphasis. <b>Weinberg–Witten (1980)</b>: a massless spin-2 graviton cannot be composite in the same spacetime — emergent gravity is consistent only if the space it curves is itself part of the emergent layer. The theorem very nearly demands the render architecture. <span class="mono">[Class B/C]</span> And the render frame <em>ranks</em> the axioms in the live crash: engine-level reversibility is inviolable, render-level locality is negotiable — the direction the replica-wormhole results took in 2019. <span class="mono">[Class C, post-dictive]</span></p>
+
+<h2><span class="n">11</span>Predictions: the seed and its fingerprints</h2>
+<p>The theory's explanatory target is the Past Hypothesis — the unexplained, preposterously low entropy of the initial state. The render frame's answer: initializations are written, written things are compressible, and compressible states are low-entropy states (our initial blob: fifty characters of code, one microstate in 2⁴²⁹⁵). <span class="mono">[Class C]</span> This fuses with a prediction: if the seed's generator is simple, the primordial field is pseudorandom, not random, and carries fingerprints.</p>
+<p>Two measured laws discipline the prediction. <b>The sensitivity ceiling:</b> a blind detector battery (spectral, autocorrelation, pair-structure, GF(2) parity, compression) catches tiled seeds, 16-bit LCGs and 31-bit LFSRs with 2¹²–2¹⁴ samples, but a 40-byte 32-bit LCG is already invisible at 2²⁰ — detectability dies while simplicity remains. <b>The survival law:</b> under 600 steps of chaotic evolution, statistical pseudorandom structure launders completely (calibrated differential test: z&nbsp;=&nbsp;5.4 against a null band of 4.9–5.9), while an <em>exact seed symmetry</em> survives at z&nbsp;≈&nbsp;200 — translation-equivariant dynamics cannot break an exact symmetry of the initial state. <span class="mono">[Class A]</span></p>
+<p>Therefore: the only robustly observable fingerprint class is <b>seed symmetry and long-range alignment, in the earliest accessible layer</b> — which, for the real universe, is the CMB. The observed low-ℓ anomalies (quadrupole–octupole alignment ~9°, hemispherical power asymmetry A&nbsp;≈&nbsp;0.07, low-ℓ odd-parity excess) are statistics of exactly this class, individually ~2–3σ, unexplained by inflation and conventionally dismissed as flukes.</p>
+<p>A spherical detector battery was built to make this quantitative: an import-time-validated spherical-harmonic transform (Gauss–Legendre × FFT, round-trip &lt; 10⁻¹⁰), the de&nbsp;Oliveira-Costa preferred axis computed via the angular-momentum inertia tensor, hemispherical asymmetry, parity ratio, and spectral spikes, all calibrated on 200 Monte-Carlo isotropic skies (false positives 1/60 at p&lt;0.01). Injecting the three anomalies at their published amplitudes into a single ℓ≤24 sky: individually p&nbsp;=&nbsp;0.047, 0.065, 0.045 (the modulation is lost to cosmic variance at this ℓ-range), <b>jointly p&nbsp;=&nbsp;4.3×10⁻³</b> (≈2.8σ) under Fisher combination. Under the hypothesis that predicts them together, the anomalies are one moderately significant signature, not three dismissible flukes. Sharper still: an exact seed symmetry is not a statistic but a <em>spectral selection rule</em> — a mirror-symmetric seed yields odd-(ℓ+m) power fraction 0.000 against an isotropic 0.5. A dedicated selection-rule search on Planck maps, with masks, foregrounds, ℓ≤64, and look-elsewhere discipline, is the stated experiment. <span class="mono">[Class A for the instrument; Class C for the cosmological inference]</span></p>
+<figure><div class="frame">IMG:sky</div>
+<figcaption><b>Figure 8.</b> A synthetic sky carrying the three observed anomalies at published amplitudes; rings mark the aligned quadrupole and octupole axes.</figcaption></figure>
+<p>A second falsifiable fork runs independently: if the engine is classical and polynomial, fault-tolerant quantum computation must fail at some scale (the measured wall: ×2.14 per qubit); if it scales indefinitely, the engine is quantum. Either outcome is information about the substrate, and the experiment is industrially funded. <span class="mono">[Class C, falsifiable]</span></p>
+
+<h2><span class="n">12</span>What is not claimed</h2>
+<div class="honest"><span class="lbl">The unearned residue</span>
+<p><b>Quantum mechanics is not derived from beneath.</b> Bell, PBR, Kochen–Specker, and §7's interference deficit close that road; the reconstruction route (§4) corners QM from axioms but does not explain the axioms — the render reading of them is interpretation, not theorem.</p>
+<p><b>The Standard Model is not derived.</b> Anomaly cornering fixes charges given the fermion content; nothing here selects SU(3)×SU(2)×U(1), three generations, or the Yukawa sector.</p>
+<p><b>The seed's identity is unknowable in principle</b> (underdetermination); only its class — compressible, low-entropy — is evidenced, and §11's ceiling shows the class statement itself has limited empirical reach.</p>
+<p><b>Installed components are flagged where they occur:</b> singlet statistics (§3), Born-rule sampling (§7). Convergence of the constraint program may terminate at a universality class rather than a unique rule — which is render-shaped (the engine below the class is unobservable), but is a ceiling nonetheless.</p></div>
+
+<h2><span class="n">13</span>Relation to prior work</h2>
+<p>The engine/render architecture is a synthesis, not an invention: digital physics (Zuse 1969; Fredkin; Wheeler 1989), the cellular-automaton interpretation ('t&nbsp;Hooft 2016), causal sets (Bombelli–Lee–Meyer–Sorkin 1987; Bombelli–Henson–Sorkin 2006), holography ('t&nbsp;Hooft 1993; Susskind 1995; Maldacena 1997), entanglement-derived geometry (Ryu–Takayanagi 2006; Van&nbsp;Raamsdonk 2010; Maldacena–Susskind ER=EPR 2013; Cao–Carroll–Michalakis 2017), entropic gravity (Jacobson 1995), operational reconstructions (Hardy 2001; CDP 2011; Masanes–Müller 2011), envariance (Zurek 2003), decoherence (Zeh; Zurek), algorithmic thermodynamics (Zurek 1989), and the CMB anomaly literature (de&nbsp;Oliveira-Costa et&nbsp;al. 2004; Planck 2013–2019 isotropy papers). What this program adds is (i)&nbsp;a single runnable architecture in which these results cohere, (ii)&nbsp;the quantitative cornering measurements of §4, and (iii)&nbsp;the survival law and selection-rule observational program of §11.</p>
+
+<footer>
+<p><b>Appendix A — reproducibility.</b> All experiments are single-file Python (numpy + Pillow only), each running in seconds to ~1 minute on a laptop: <span class="mono">run.py</span> (laws & doors), <span class="mono">bell.py</span> (CHSH), <span class="mono">corner.py / census.py / frontier.py / ledger3d.py</span> (cornering), <span class="mono">entangle.py / curve.py</span> (geometry), <span class="mono">tempo.py / selfgrav.py</span> (dynamics & gravity), <span class="mono">duality.py / eraser.py / nogo.py</span> (quantum layer), <span class="mono">arrow.py / insider.py</span> (arrow & observers), <span class="mono">sprinkle.py / chiral.py</span> (Lorentz & doubling), <span class="mono">axioms.py / generation.py</span> (QM & SM cornering), <span class="mono">collider.py</span> (axiom matrix), <span class="mono">fingerprint.py / sky.py</span> (the prediction program). Films and figures are generated by the scripts.</p>
+<p>Correspondence: J. Leaver. This document reports toy-model results and stated conjectures; it has not been peer reviewed.</p>
+</footer>
+</div>
