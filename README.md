@@ -2,7 +2,7 @@
 
 # The Rendered Universe
 
-**Twenty-one runnable experiments on one hypothesis: the physical universe is
+**Twenty-two runnable experiments on one hypothesis: the physical universe is
 not a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
@@ -400,6 +400,43 @@ and the factor-2 light bending.*</sub>
 
 ---
 
+### 16 · The ledger prices heat, and Einstein is in the bill
+
+Part 21 left the field equation postulated. Jacobson's program says it should
+never need postulating: gravity is the thermodynamics of the entanglement
+ledger — δQ = TδS — with Faulkner et al.'s sharpening that the entanglement
+*first law*, holding for all regions at once, **is** the linearized Einstein
+equation. Part 22 climbs the first camp on a critical fermion chain where
+every entropy is exact. Heat it globally: ΔS of **every interval at every
+temperature** collapses onto the parameter-free CFT curve ⅓ln(sinh x/x)
+(Stefan–Boltzmann's π/12 measured en route); the small-x limb *is* the first
+law (ΔS = Δ⟨K⟩ at 0.98 ± 0.04, the parabolic kernel carrying no knobs), and
+the bend beyond it is Bekenstein's bound — never once violated. The ledger
+prices heat and work apart, exactly as Clausius wrote: a pure particle's
+entropy lives only at the entangling cut (0.91 bit while straddling it,
+2×10⁻⁵ deep inside, while its modular energy keeps climbing — work: fully
+priced, entropy-free), and a classically mixed packet pays exactly h₂(λ)
+anywhere it sits (match 0.9999). Across a landscape of two warm hills the
+kernel predicts every sliding interval's ΔS at r = 0.9997 — then inverts:
+the energy landscape read back from entropies alone (r = 0.9996). And the
+turn: the limb scales as x^1.98, which through the Ryu–Takayanagi dictionary
+is a bulk response h ∝ z² — the *unique static solution of the linearized
+Einstein equations in AdS₃*. A mass gap frays the emergent depth; hard lumps
+never build it. Only soft heat writes geometry — which is Jacobson's δQ,
+rediscovered by the instrument.
+
+<div align="center">
+<img src="films/firstlaw.png" width="820" alt="The entanglement first law, measured">
+
+<sub>*One parameter-free curve for every interval at every temperature (a
+gapped chain falls off it); heat vs work at the cut; a heat landscape read
+back from entropies alone; Einstein in the limb.*</sub>
+</div>
+
+— [`firstlaw.py`](firstlaw.py)
+
+---
+
 ## Every experiment
 
 | Part | Script | The question it asks | Headline result | ~time |
@@ -433,6 +470,7 @@ and the factor-2 light bending.*</sub>
 | 19 | `firstlight.py` | What does the *real* sky say? | Anomalies reproduced from raw bytes; joint p = 0.003–0.013; no mirror rule | 47s |
 | 20 | `echo.py` | Does the signature echo in E-modes? | No echo (p 0.2–0.8) — and none was detectable: power 32% today, 98% at LiteBIRD | 26s |
 | 21 | `shear.py` | Can the surviving (tensor) gravity be built? | +/× ring patterns; silent monopole (exact); light bends 1.93× Newton (GR: 2) | 75s |
+| 22 | `firstlaw.py` | Can Einstein's equation be *read off* the ledger? | First law measured (0.98±0.04); heat/work priced apart; x² limb = the z² Einstein profile (AdS₃) | 8s |
 
 ## Quickstart
 
@@ -445,6 +483,7 @@ python3 run.py        # start here: a universe, a firewall, and the doors
 python3 genesis.py    # or here: three postulates, universes as output
 python3 firstlight.py # the detector battery, pointed at the real CMB
 python3 echo.py       # the registered test, asked of E-mode polarization
+python3 firstlaw.py   # the entanglement first law, and Einstein in its limb
 ```
 
 Parts 19–20 run offline from the committed reductions
@@ -456,7 +495,7 @@ the raw Planck/WMAP archives (~7 GB, URLs and SHA-256 recorded inside), run
 ## The paper
 
 **[The Rendered Universe (PDF)](writeup/the-rendered-universe.pdf)** — the full
-research report: abstract, claim taxonomy, sixteen figures, an
+research report: abstract, claim taxonomy, thirteen figures, an
 objections-and-replies section, and a reproducibility appendix. The HTML source
 is [`writeup/paper.html`](writeup/paper.html).
 
