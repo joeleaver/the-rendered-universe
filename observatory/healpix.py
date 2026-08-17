@@ -113,7 +113,7 @@ def ring_info(nside):
     z = np.where(cap_n, 1 - jr ** 2 / (3.0 * nside ** 2), z)
     z = np.where(cap_s, -1 + (4 * nside - jr) ** 2 / (3.0 * nside ** 2), z)
     kshift = np.where(cap_n | cap_s, 0, (jr - nside) & 1)
-    phi0 = (1 - kshift / 2.0) * (np.pi / (2 * nr))  # center of pixel j=0
+    phi0 = ((1 - kshift) / 2.0) * (np.pi / (2 * nr))  # center of pixel j=0
     # start indices
     npix = 12 * nside ** 2
     ncap = 2 * nside * (nside - 1)
@@ -225,8 +225,31 @@ def synth_at(alm, z, phi):
 
 # ---- import-time validation ------------------------------------------
 
+# external anchors: pixel centers from the reference HEALPix
+# implementation (healpy 1.18, pix2ang) — geometry is convention, and
+# conventions are pinned against the world, not against ourselves
+_ANCHORS = [
+    (4, 0, 0.9791666666666666, 0.7853981633974483),
+    (4, 5, 0.9166666666666666, 1.1780972450961724),
+    (4, 44, 0.4999999999999999, 1.5707963267948966),
+    (4, 95, 6.123233995736766e-17, 2.9452431127404304),
+    (4, 191, -0.9791666666666666, 5.497787143782138),
+    (64, 0, 0.9999186197916666, 0.7853981633974483),
+    (64, 1000, 0.9606119791666666, 5.462087227264072),
+    (64, 24575, 6.123233995736766e-17, 3.1293208072867076),
+    (64, 49151, -0.9999186197916666, 5.497787143782138),
+    (2048, 0, 0.9999999205271403, 0.7853981633974483),
+    (2048, 12345678, 0.5094401041666667, 3.397767445166695),
+    (2048, 50331647, -0.9999999205271403, 5.497787143782138),
+]
+
+
 def _validate():
     rng = np.random.default_rng(7)
+    for nside, p, z_ref, phi_ref in _ANCHORS:
+        z, phi = pix2ang_ring(nside, np.array([p]))
+        assert abs(z[0] - z_ref) < 1e-12 and abs(phi[0] - phi_ref) < 1e-12, \
+            f'pixel geometry disagrees with reference at nside {nside}'
     for nside in (4, 16):
         npix = 12 * nside ** 2
         r_of_n = nest2ring(nside)
