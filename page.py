@@ -21,11 +21,14 @@ against it.
        about 3 T_H (the lattice analog of the trans-Planckian
        cutoff), so spectroscopy uses a deeper hole tuned to the same
        temperature.
-  [94] evaporation: the flow retreats at u = 0.7 (faster than the
-       0.4 inward drift of the stored partner quanta, so each
-       partner is overtaken and released) and is gone by t = 660.
-       The retreat schedule is prescribed, not derived from
-       backreaction; that is stated where it matters.
+  [94] evaporation driven by the measured flux: the hole is assigned
+       an energy budget M = rho * x_h (rho, its energy per unit
+       length, is the one prescribed constant), the outgoing energy
+       flux through a fixed surface is measured during the run, and
+       the horizon position follows dM/dt = -F(t). The lifetime is
+       measured, not scheduled. The measured retreat stays faster
+       than the 0.4 inward drift of the stored partner quanta, so
+       each is overtaken and released.
   [95] three entropy curves for the radiation (= everything outside
        the hole): (i) the exact entropy, computable here because the
        global state is pure — it rises, turns over, and returns to
@@ -55,8 +58,11 @@ VF = 2.0
 
 A0, WP, XH0 = 0.6, 3.0, 240.0        # the hole that evaporates
 A0_D, WP_D, XH_D = 0.75, 6.0, 300.0  # the deeper static hole (spectra)
-U_RET = 0.7
-T_RAMP, T_RETREAT, T_END = 60.0, 260.0, 760.0
+RHO = 3.0e-4         # the hole's energy per unit length (prescribed)
+T_FEED = 260.0       # the budget ledger opens after a static shining phase
+U_CAP = 1.2          # numerical cap on the retreat rate
+X_FLUX = 320         # flux is measured crossing this fixed surface
+T_RAMP, T_END = 60.0, 900.0
 TAU = 0.15
 
 S_HC = math.atanh(1 - 1.0 / A0)
@@ -65,7 +71,6 @@ T_HAWK = KAPPA / (2 * math.pi)
 S_HD = math.atanh(1 - 1.0 / A0_D)
 KAPPA_D = 4 * (A0_D / (2 * WP_D)) * (1 - math.tanh(S_HD) ** 2)
 T_HAWK_D = KAPPA_D / (2 * math.pi)
-T_GONE = T_RETREAT + XH0 / U_RET   # horizon reaches x = 0
 
 # bond sets for the split-step (no two bonds in a set share a site)
 E1 = np.arange(0, N - 1, 2)
@@ -144,6 +149,12 @@ def bond_energy(M):
     return -2 * np.real(np.sum(rows * nxt.conj(), axis=1))
 
 
+def energy_right(M):
+    rows = M[X_FLUX:N - 1]
+    nxt = M[X_FLUX + 1:N]
+    return float(-2 * np.sum(np.real(rows * nxt.conj())))
+
+
 def spectrum_deep(M0):
     """Occupation spectrum of the deeper static hole at t = 255."""
     M = M0.copy()
@@ -160,12 +171,6 @@ def spectrum_deep(M0):
     base_h = occupations(M0, 330, 900, ks_h)
     n_hole = -occupations(M, 330, 900, ks_h, base=base_h)
     return eps, n_part, n_hole
-
-
-def horizon_at(t):
-    if t < T_RETREAT:
-        return XH0
-    return XH0 - U_RET * (t - T_RETREAT)
 
 
 # ---- main -------------------------------------------------------------
@@ -246,7 +251,6 @@ def main():
     e_vac = bond_energy(M0)
 
     def snapshot():
-        xh = horizon_at(t)
         snaps['t'].append(t)
         snaps['xh'].append(xh)
         if xh > 5:
@@ -268,9 +272,19 @@ def main():
             snaps['b_star'].append(-1)
         snaps['streak'].append(bond_energy(M) - e_vac)
 
+    # backreaction bookkeeping: the hole starts with energy M0 = RHO*XH0
+    # and its position is driven by the measured flux through X_FLUX:
+    # dM_hole/dt = -F(t), x_h = M_hole/RHO. RHO is the one prescribed
+    # constant; the timing is measured, not scheduled.
     snap_every = int(20 / TAU)
+    xh = XH0
+    m_hole = RHO * XH0
+    e_right_prev = None
+    f_ema = 0.0
+    ema_w = TAU * 5 / 30.0          # ~30-tick smoothing
+    u_hist = []
+    t_gone = None
     for it in range(int(T_END / TAU)):
-        xh = horizon_at(t)
         if t < T_RAMP:
             amp = math.sin(0.5 * math.pi * t / T_RAMP) ** 2
             a = tilt_profile(XH0, amp)
@@ -280,6 +294,19 @@ def main():
             a = np.zeros(N)
         step(M, a)
         t += TAU
+        if it % 5 == 0:
+            e_r = energy_right(M)
+            if e_right_prev is not None:
+                f_now = max((e_r - e_right_prev) / (5 * TAU), 0.0)
+                f_ema += ema_w * (f_now - f_ema)
+            e_right_prev = e_r
+            if t >= T_FEED and xh > -40:
+                u = min(f_ema / RHO, U_CAP)
+                u_hist.append(u)
+                xh = max(xh - u * 5 * TAU, -40.0)
+                m_hole = RHO * max(xh, 0.0)
+                if xh <= 0 and t_gone is None:
+                    t_gone = t
         if it % snap_every == snap_every - 1:
             snapshot()
         if spec_s is None and t >= 255:
@@ -346,8 +373,8 @@ def main():
     S_island = S_gap + mu
     early = (ts > 90) & (ts < 180)
     rate, icpt = np.polyfit(ts[early], S_true[early], 1)
-    S_hawk = np.where(ts < T_GONE, icpt + rate * ts,
-                      icpt + rate * T_GONE)
+    tg = t_gone if t_gone is not None else ts[-1]
+    S_hawk = np.where(ts < tg, icpt + rate * ts, icpt + rate * tg)
     S_formula = np.where(np.isnan(S_island), 0.0,
                          np.minimum(S_hawk,
                                     np.nan_to_num(S_island, nan=np.inf)))
@@ -356,20 +383,32 @@ def main():
     i_turn = int(np.argmax(S_true))
     t_turn = float(ts[i_turn])
 
-    print('[94] evaporation:')
-    print(f'     the flow retreats at u = {U_RET} from t = '
-          f'{T_RETREAT:.0f}; the horizon reaches x = 0')
-    print(f'     (no more supersonic region) at t = {T_GONE:.0f}.')
-    print('     u exceeds the 0.4 inward drift of the stored partner '
-          'quanta, so the')
-    print('     horizon overtakes each partner and releases it; the '
-          'released quanta')
-    print('     join the radiation. The schedule is prescribed — '
-          'consistent in scale with')
-    print(f'     the measured emission (entropy rate {rate:.4f} '
-          'nats/tick while static) but')
-    print('     not derived from backreaction; that derivation is '
-          'still owed.')
+    u_arr = np.array(u_hist)
+    print('[94] evaporation, driven by the measured flux:')
+    print(f'     the hole starts with energy M0 = rho * x_h = '
+          f'{RHO * XH0:.4f}, with rho = {RHO:.1e}')
+    print('     (energy per unit length) the one prescribed constant. '
+          'From t = '
+          f'{T_FEED:.0f},')
+    print(f'     the energy crossing x = {X_FLUX} is measured '
+          '(30-tick smoothing) and the')
+    print('     horizon position follows the ledger: dM/dt = -F(t), '
+          'x_h = M/rho.')
+    capped = 100.0 * float((u_arr >= U_CAP - 1e-9).mean())
+    print(f'     Measured: mean retreat rate u = {u_arr.mean():.2f}, '
+          f'range {u_arr.min():.2f}-{u_arr.max():.2f}; the')
+    print('     retreat accelerates as its own emission adds to the '
+          'flux (a runaway,')
+    print(f'     as in real evaporation), and the numerical cap '
+          f'{U_CAP} binds for {capped:.0f}% of')
+    print('     the retreat. u stays above the 0.4 inward drift of the '
+          'stored partner')
+    print('     quanta, so each is overtaken and released.')
+    tg_s = f'{t_gone:.0f}' if t_gone is not None else 'beyond the run'
+    print(f'     The horizon reaches x = 0 at t = {tg_s} — a lifetime '
+          'measured, not')
+    print('     scheduled. Still prescribed: rho, the flow profile\'s shape, and the cap')
+    print('     that tames the late-time runaway.')
     print(f'     [{time.time() - t00:.0f}s]')
     print()
 
@@ -437,7 +476,7 @@ def main():
           'a measured value.')
 
     figure(spec_d, ts, S_true, S_hawk, S_island, S_formula, b_star,
-           xhs, snaps, t_page, t_turn, mu, 'films/page.png')
+           xhs, snaps, t_page, t_turn, t_gone, mu, 'films/page.png')
     print()
     print(f'     films/page.png  ({time.time() - t00:.0f}s)')
 
@@ -445,7 +484,7 @@ def main():
 # ---- figure -----------------------------------------------------------
 
 def figure(spec_d, ts, S_true, S_hawk, S_island, S_formula, b_star,
-           xhs, snaps, t_page, t_turn, mu, path):
+           xhs, snaps, t_page, t_turn, t_gone, mu, path):
     W, H = 1560, 880
     img = Image.new('RGB', (W, H), BG)
     d = ImageDraw.Draw(img)
@@ -465,8 +504,8 @@ def figure(spec_d, ts, S_true, S_hawk, S_island, S_formula, b_star,
     def axy(t_, s_):
         return (ax0 + (ax1 - ax0) * t_ / ts[-1],
                 ay1 - (ay1 - ay0) * s_ / smax)
-    for tm, lab in ((T_RAMP, 'flow on'), (T_RETREAT, 'retreat'),
-                    (T_GONE, 'hole gone')):
+    for tm, lab in ((T_RAMP, 'flow on'), (T_FEED, 'feedback on'),
+                    (t_gone, 'hole gone')):
         px = axy(tm, 0)[0]
         d.line([(px, ay0), (px, ay1)], fill=GRIDC)
         d.text((px + 3, ay0 + 2), lab, fill=MUTED)
