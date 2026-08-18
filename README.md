@@ -2,7 +2,7 @@
 
 # The Rendered Universe
 
-**Twenty-five runnable experiments on one hypothesis: the physical universe is
+**Twenty-six runnable experiments on one hypothesis: the physical universe is
 not a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
@@ -552,6 +552,50 @@ slice.*</sub>
 
 ---
 
+### 20 · The first law with a propagating metric
+
+Part 25's result carried a caveat it stated itself: in 1+1 dimensions the
+dual bulk is three-dimensional, where gravity has nothing to radiate — there
+was no graviton to miss. Part 26 moves the program up a dimension: a π-flux
+lattice of free fermions (two Dirac cones, velocity 2 — the free CFT in 2+1
+dimensions), whose dual bulk is four-dimensional, where the metric
+propagates. The Casini–Huerta–Myers parabola — the same modular weight in
+any dimension — passes the disk first law (landscape correlation
+**r = 0.9999**, no fitted parameters), and when a warm bump is released the
+first law keeps holding **on every slice** (kernel/entropy = 1.089 ± 0.026)
+even as the energy ring free-streams at the band velocity (measured 1.96)
+rather than the sound speed 1.41 that any closed, isotropic (e, p)
+hydrodynamics would give. The expectation that slice-tracking should *fail*
+in 2+1d is refuted — the first law is a constraint, and constraints hold on
+every slice. What breaks is *prediction*: two states are built with the same
+energy map (matched to **1.2% of peak**), identically zero momentum, and
+every disk entropy agreeing (gap 0.006 vs signal 0.67 nats) — but opposite
+shear, one state being the other turned ninety degrees by an exact lattice
+symmetry. Their futures diverge to **100%** while a control state with 34×
+the initial energy mismatch but the *same* shear converges. In 1+1d this
+experiment cannot be built — tracelessness forces T<sub>xx</sub> = T₀₀,
+which is why part 25's tracking worked. In 2+1d the shear is free slice
+data, invisible to every modular kernel, and it propagates: through the
+Ryu–Takayanagi dictionary, the boundary shadow of the bulk graviton.
+
+<div align="center">
+<img src="films/graviton_twins.gif" width="500" alt="Twin states with the same energy slice, diverging">
+
+<sub>*Twin B is twin A turned ninety degrees: the same energy map at t = 0,
+futures apart by t = 12. The datum that decides between them — the shear —
+is invisible to the energy slice and to every disk's entropy.*</sub>
+
+<img src="films/graviton.png" width="820" alt="The first law with a propagating metric">
+
+<sub>*The disk first law in 2+1d, the free-streaming quench with the
+constraint holding on every slice, and the twins' divergence following the
+shear rather than the residual shape mismatch.*</sub>
+</div>
+
+— [`graviton.py`](graviton.py)
+
+---
+
 ## Every experiment
 
 | Part | Script | The question it asks | Headline result | ~time |
@@ -589,6 +633,7 @@ slice.*</sub>
 | 23 | `horizon.py` | Do clocks, black holes, and Hawking radiation follow? | Dilation on GR curves (no fits); a frozen star that reflects; steady Hawking flux at 0.94×κ/2π, partners resolved, state pure | 37s |
 | 24 | `page.py` | Does an evaporating horizon obey the Page curve? | Exact entropy: rise, turnover, return to zero; flux-driven retreat; island formula tracks it to 0.5 nats with a measured 1/4G | 3m |
 | 25 | `quench.py` | Does the first law hold in time? | Energy and entanglement share one light cone (2.00/2.01 vs v_F = 2); kernel/entropy = 1.030±0.004 at every slice | 10s |
+| 26 | `graviton.py` | What does the first law miss when the metric propagates? | Constraint holds on every slice; twin states with matched (e, p) slices and opposite shear diverge to 100% — the spin-2 datum the slice cannot see | 3m |
 
 ## Quickstart
 
@@ -605,6 +650,7 @@ python3 firstlaw.py   # the entanglement first law, and Einstein in its limb
 python3 horizon.py    # clocks, a black hole, and Hawking radiation
 python3 page.py       # an evaporating horizon and the Page curve
 python3 quench.py     # the entanglement first law, time-resolved
+python3 graviton.py   # the twins: the slice datum the first law cannot see
 ```
 
 Parts 19–20 run offline from the committed reductions
@@ -616,7 +662,7 @@ the raw Planck/WMAP archives (~7 GB, URLs and SHA-256 recorded inside), run
 ## The paper
 
 **[The Rendered Universe (PDF)](writeup/the-rendered-universe.pdf)** — the full
-research report: abstract, claim taxonomy, sixteen figures, an
+research report: abstract, claim taxonomy, seventeen figures, an
 objections-and-replies section, and a reproducibility appendix. The HTML source
 is [`writeup/paper.html`](writeup/paper.html).
 
