@@ -2,7 +2,7 @@
 
 # The Rendered Universe
 
-**Thirty runnable experiments on one hypothesis: the physical universe is
+**Thirty-one runnable experiments on one hypothesis: the physical universe is
 not a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
@@ -746,6 +746,45 @@ eight and only count eight.*</sub>
 
 ---
 
+### 25 · The anomaly decides
+
+A deliberate gamble on the dynamical frontier: drive the mirror of a
+genuinely chiral U(1) model — the 3-4-5-0 model, whose anomaly cancels by
+the Pythagorean identity 3²+4² = 5²+0² — toward a symmetric gap, and watch
+the anomaly decide. Scored honestly: three measurements and one measured
+wall. **The certificate:** scanning every chiral U(1) charge assignment
+(4,290 of them, charges to 10) against 3,648 null integer vectors, a
+symmetric gapping pair exists for **all 10 anomaly-free assignments and
+none of the 4,280 anomalous ones — zero exceptions**. The bookkeeping that
+cancels the anomaly is the bookkeeping that unlocks the mirror's erasure,
+and 3-4-5-0 is the smallest genuinely chiral solution in existence.
+**The trap:** an anomalous impostor's lattice model is spectrally
+*identical* to the anomaly-free one — to 10⁻¹³, at every coupling — so no
+local diagnostic ever reads the charge values; the anomaly binds only
+through flux or a gauge field. **The cutoff:** flux threading pumps charge
+that is *wrong* until the mode tower reaches twice the largest charge,
+then locks exactly onto the anomaly coefficient (0 vs −1) forever — the
+anomaly is the charge that falls off the bottom of the truncated tower.
+That fixes the dynamical test's price at 40 fermion modes against the
+~24-mode exact-diagonalization wall, which is why the published mirror
+decoupling needed matrix-product machinery — and the certificate proves no
+smaller chiral content exists to test. **The wall is not the code; it is
+Pythagoras.** The interacting version of anomaly matching stands already
+won in the discrete setting: part 30's count-eight erasure *is* 't Hooft
+matching, measured.
+
+<div align="center">
+<img src="films/thooft.png" width="820" alt="The anomaly decides">
+
+<sub>*Gapping pairs exist exactly on the anomaly-free diagonal; the
+pumped charge locks onto the anomaly coefficient at twice the largest
+charge; and the gamble's scorecard.*</sub>
+</div>
+
+— [`thooft.py`](thooft.py)
+
+---
+
 ## Every experiment
 
 | Part | Script | The question it asks | Headline result | ~time |
@@ -788,6 +827,7 @@ eight and only count eight.*</sub>
 | 28 | `einstein.py` | Is Einstein's equation forced by the bookkeeping? | Area price 0.33 nats/length = 1/4G; no state beats the vacuum; conservation forces □h = 0 — while a shear-shaped operator measurably fails protection (r^−4, not r^−6) | 2m |
 | 29 | `schwinger.py` | Can the program host interacting matter? | Lattice QED: meson at M/e = 0.569 (exact: 0.564); confinement at tension 0.235 (classical 0.25); the string breaks by measured pair creation | 2m |
 | 30 | `chirality.py` | How close can an engine get to the weak force? | One-handed edge fermion (twin banished to the far edge); anomaly = 1 electron pumped through the bulk per flux quantum; the mirror erased at count 8 and only 8 | 30s |
+| 31 | `thooft.py` | Does the anomaly decide which matter can be erased? | Gapping pairs ⟺ anomaly-free (4,290 assignments, 0 exceptions); local spectra measurably charge-blind (ΔE < 10⁻¹³); the dynamical test priced at 40 modes vs ED's 24 | 45s |
 
 ## Quickstart
 
@@ -809,6 +849,7 @@ python3 knobs.py      # both sides of "tune every knob," measured in bits
 python3 einstein.py   # the forced equation: area price, equilibrium, protection
 python3 schwinger.py  # the first interacting engine: confinement and the meson
 python3 chirality.py  # the one-handed edge, the anomaly, and the erased mirror
+python3 thooft.py     # the gamble: the anomaly decides, measured exhaustively
 ```
 
 Parts 19–20 run offline from the committed reductions
@@ -820,7 +861,7 @@ the raw Planck/WMAP archives (~7 GB, URLs and SHA-256 recorded inside), run
 ## The paper
 
 **[The Rendered Universe (PDF)](writeup/the-rendered-universe.pdf)** — the full
-research report: abstract, claim taxonomy, twenty-one figures, an
+research report: abstract, claim taxonomy, twenty-two figures, an
 objections-and-replies section, and a reproducibility appendix. The HTML source
 is [`writeup/paper.html`](writeup/paper.html).
 
