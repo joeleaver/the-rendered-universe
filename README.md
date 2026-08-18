@@ -2,7 +2,7 @@
 
 # The Rendered Universe
 
-**Twenty-eight runnable experiments on one hypothesis: the physical universe is
+**Twenty-nine runnable experiments on one hypothesis: the physical universe is
 not a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
@@ -671,6 +671,43 @@ r^−6.*</sub>
 
 ---
 
+### 23 · The first interacting engine
+
+Every engine in the repository so far has been free — exactly solvable
+matter whose particles never push on each other. Part 29 crosses that wall
+on the one rung where it is tractable: the **Schwinger model**, QED in one
+space dimension — the hydrogen atom of interacting field theory, with
+exactly known continuum answers to calibrate against. The gauge field
+integrates out exactly (in 1D Gauss's law leaves no radiative photon: the
+gauge sector is pure bookkeeping, the same constraint-without-radiation
+anatomy 3D gravity showed in part 25), leaving fermions with a Coulomb
+interaction, solved by exact diagonalization with a hand-rolled Lanczos
+(numpy only, validated against dense diagonalization to 5×10⁻¹⁴).
+Measured: the composite **meson at M/e = 0.569** — within 1% of the exact
+e/√π = 0.5642 — read from the screening length of the vacuum's
+polarization cloud (the plateau instrument carries the +20% coarse-lattice
+systematic the length avoids; direct gaps approach from above); **linear
+confinement** of a half-integer charge at tension 0.235 (classical 0.25 —
+vacuum polarization pays the 6%) that never breaks; and a **string that
+breaks**: the integer charge's potential rises at slope 0.93 through six
+sites, then collapses to 0.01 as the vacuum manufactures a fermion pair —
+flux tube, emptied middle, and the created pair's charge cloud all
+measured in place. The cost is part 15's wall, *felt*: twenty interacting
+sites = 184,756 amplitudes, where the free engines did 6,400 sites in
+seconds. Still open: chiral interacting matter in 3+1 dimensions — the
+knob count's standing wall.
+
+<div align="center">
+<img src="films/schwinger.png" width="820" alt="The Schwinger model">
+
+<sub>*Confinement, screening, and the string that breaks — with the meson
+mass read off the screening cloud within 1% of the exact answer.*</sub>
+</div>
+
+— [`schwinger.py`](schwinger.py)
+
+---
+
 ## Every experiment
 
 | Part | Script | The question it asks | Headline result | ~time |
@@ -711,6 +748,7 @@ r^−6.*</sub>
 | 26 | `graviton.py` | What does the first law miss when the metric propagates? | Constraint holds on every slice; twin states with matched (e, p) slices and opposite shear diverge to 100% — the spin-2 datum the slice cannot see | 3m |
 | 27 | `knobs.py` | If every knob were tuned to observation, would the theory still predict? | Measured physics = 278 bits; a 3D binary engine holds 28 — tenfold overconstrained; freedom crosses the data between k = 4–5 (2D) and k = 2–3 (3D) | 1s |
 | 28 | `einstein.py` | Is Einstein's equation forced by the bookkeeping? | Area price 0.33 nats/length = 1/4G; no state beats the vacuum; conservation forces □h = 0 — while a shear-shaped operator measurably fails protection (r^−4, not r^−6) | 2m |
+| 29 | `schwinger.py` | Can the program host interacting matter? | Lattice QED: meson at M/e = 0.569 (exact: 0.564); confinement at tension 0.235 (classical 0.25); the string breaks by measured pair creation | 2m |
 
 ## Quickstart
 
@@ -730,6 +768,7 @@ python3 quench.py     # the entanglement first law, time-resolved
 python3 graviton.py   # the twins: the slice datum the first law cannot see
 python3 knobs.py      # both sides of "tune every knob," measured in bits
 python3 einstein.py   # the forced equation: area price, equilibrium, protection
+python3 schwinger.py  # the first interacting engine: confinement and the meson
 ```
 
 Parts 19–20 run offline from the committed reductions
@@ -741,7 +780,7 @@ the raw Planck/WMAP archives (~7 GB, URLs and SHA-256 recorded inside), run
 ## The paper
 
 **[The Rendered Universe (PDF)](writeup/the-rendered-universe.pdf)** — the full
-research report: abstract, claim taxonomy, nineteen figures, an
+research report: abstract, claim taxonomy, twenty figures, an
 objections-and-replies section, and a reproducibility appendix. The HTML source
 is [`writeup/paper.html`](writeup/paper.html).
 
