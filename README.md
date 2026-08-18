@@ -2,7 +2,7 @@
 
 # The Rendered Universe
 
-**Twenty-six runnable experiments on one hypothesis: the physical universe is
+**Twenty-seven runnable experiments on one hypothesis: the physical universe is
 not a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
@@ -596,6 +596,43 @@ shear rather than the residual shape mismatch.*</sub>
 
 ---
 
+### 21 · The knob count
+
+The program's answer to "why these constants?" has always been: the rule and
+the seed are contingent — cornered and tuned, never derived. That answer is
+only respectable if tuning cannot excuse anything, so part 27 measures both
+sides of "tune every knob to observation" in the same unit. The data side:
+observation has supplied **278 bits** to fix the constants of the Standard
+Model and ΛCDM — log₂(value/uncertainty) summed over the published parameter
+table (the electron mass alone carries 32 bits; the θ_QCD bound is a 36-bit
+measured zero; 307 bits with the neutrino sector). The theory side: the
+*exact* size of the surviving rule class by alphabet and dimension, from the
+same orbit combinatorics as parts 4 and 10. The constraint ledger taxes at a
+fixed per-dimension rate — it keeps 6.5–7.3% of log-rule-space in 2D and
+1.5–1.7% in 3D at every alphabet — and its freedom crosses the data's 278
+bits **between k = 4 and 5 in 2D, and between k = 2 and 3 in 3D**. A 3D
+binary engine holds 28 bits of rule freedom against 278 bits of measured
+constraint: if such an engine fit observation at all, it would be
+overconstrained **tenfold** — 250 bits of pure prediction. Above the
+crossover, the same fit would be bought, not forced. The program's original
+aesthetic bet (a minimal alphabet) and its predictivity requirement turn
+out, by measurement, to be the same bet. Stated plainly: none of this shows
+an engine in the class *reproduces* the 278 bits — that construction
+(interacting chiral matter on a lattice) remains the standing wall.
+
+<div align="center">
+<img src="films/knobs.png" width="820" alt="The knob count">
+
+<sub>*Left: exact rule-class freedom in bits crossing the measured 278-bit
+information content of known physics. Right: where the 278 bits live —
+precision is information, so the electron mass and α outweigh every quark
+mass combined.*</sub>
+</div>
+
+— [`knobs.py`](knobs.py)
+
+---
+
 ## Every experiment
 
 | Part | Script | The question it asks | Headline result | ~time |
@@ -634,6 +671,7 @@ shear rather than the residual shape mismatch.*</sub>
 | 24 | `page.py` | Does an evaporating horizon obey the Page curve? | Exact entropy: rise, turnover, return to zero; flux-driven retreat; island formula tracks it to 0.5 nats with a measured 1/4G | 3m |
 | 25 | `quench.py` | Does the first law hold in time? | Energy and entanglement share one light cone (2.00/2.01 vs v_F = 2); kernel/entropy = 1.030±0.004 at every slice | 10s |
 | 26 | `graviton.py` | What does the first law miss when the metric propagates? | Constraint holds on every slice; twin states with matched (e, p) slices and opposite shear diverge to 100% — the spin-2 datum the slice cannot see | 3m |
+| 27 | `knobs.py` | If every knob were tuned to observation, would the theory still predict? | Measured physics = 278 bits; a 3D binary engine holds 28 — tenfold overconstrained; freedom crosses the data between k = 4–5 (2D) and k = 2–3 (3D) | 1s |
 
 ## Quickstart
 
@@ -651,6 +689,7 @@ python3 horizon.py    # clocks, a black hole, and Hawking radiation
 python3 page.py       # an evaporating horizon and the Page curve
 python3 quench.py     # the entanglement first law, time-resolved
 python3 graviton.py   # the twins: the slice datum the first law cannot see
+python3 knobs.py      # both sides of "tune every knob," measured in bits
 ```
 
 Parts 19–20 run offline from the committed reductions
@@ -662,7 +701,7 @@ the raw Planck/WMAP archives (~7 GB, URLs and SHA-256 recorded inside), run
 ## The paper
 
 **[The Rendered Universe (PDF)](writeup/the-rendered-universe.pdf)** — the full
-research report: abstract, claim taxonomy, seventeen figures, an
+research report: abstract, claim taxonomy, eighteen figures, an
 objections-and-replies section, and a reproducibility appendix. The HTML source
 is [`writeup/paper.html`](writeup/paper.html).
 
