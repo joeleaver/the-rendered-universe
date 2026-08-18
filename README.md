@@ -2,7 +2,7 @@
 
 # The Rendered Universe
 
-**Twenty-seven runnable experiments on one hypothesis: the physical universe is
+**Twenty-eight runnable experiments on one hypothesis: the physical universe is
 not a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
@@ -633,6 +633,44 @@ mass combined.*</sub>
 
 ---
 
+### 22 · What the ledger forces
+
+Every gravity part so far verified that the entanglement first law *holds*;
+part 28 asks the summit question — is the metric's behavior **forced** by
+the bookkeeping, or merely permitted? Jacobson's entanglement-equilibrium
+argument needs three measurable ingredients, and each is measured on the
+2+1d lattice. The **area price**: vacuum entanglement grows at 0.31–0.33
+nats per unit boundary length across disks, diamonds, and squares (5%
+orientation spread — the lattice's fingerprint); its 1D counterpart is the
+number that already ran part 24's Page curve. **Equilibrium**: across a
+state zoo (heat, bumps, beams, a strained vacuum) no state beats the
+vacuum — δ⟨K⟩ ≥ δS everywhere to within the kernel's known systematic.
+With the first law as the third ingredient and the imported links named
+(the small-ball geometric identity, the RT dictionary), the linearized
+Einstein response is forced, with **Newton's constant read off the vacuum:
+1/4G = 0.33 nats per unit length**. The radiative sector is forced by
+conservation: the measured e ∼ T^3.1 pins the stress tensor at Δ = d = 3,
+dual to a **massless** spin-2 bulk field — □h = 0 with nothing to tune —
+and the conserved charge forces a massless bulk vector the same way (a
+photon and a graviton, both from bookkeeping). The measured control came
+from a refuted design hypothesis: an operator merely *shaped* like shear
+decays as r^−4.0, not the stress tensor's r^−6 — a dimension-2 bilinear,
+admitted by the lattice's projective rotations, dominates it. Looking like
+stress protects nothing; being conserved protects exactly.
+
+<div align="center">
+<img src="films/einstein.png" width="820" alt="What the ledger forces">
+
+<sub>*The area price across three region families (the induced 1/4G), the
+conformal thermal scaling, and the correlator trap: the naive shear
+operator follows the unprotected r^−4 guide, not the stress tensor's
+r^−6.*</sub>
+</div>
+
+— [`einstein.py`](einstein.py)
+
+---
+
 ## Every experiment
 
 | Part | Script | The question it asks | Headline result | ~time |
@@ -672,6 +710,7 @@ mass combined.*</sub>
 | 25 | `quench.py` | Does the first law hold in time? | Energy and entanglement share one light cone (2.00/2.01 vs v_F = 2); kernel/entropy = 1.030±0.004 at every slice | 10s |
 | 26 | `graviton.py` | What does the first law miss when the metric propagates? | Constraint holds on every slice; twin states with matched (e, p) slices and opposite shear diverge to 100% — the spin-2 datum the slice cannot see | 3m |
 | 27 | `knobs.py` | If every knob were tuned to observation, would the theory still predict? | Measured physics = 278 bits; a 3D binary engine holds 28 — tenfold overconstrained; freedom crosses the data between k = 4–5 (2D) and k = 2–3 (3D) | 1s |
+| 28 | `einstein.py` | Is Einstein's equation forced by the bookkeeping? | Area price 0.33 nats/length = 1/4G; no state beats the vacuum; conservation forces □h = 0 — while a shear-shaped operator measurably fails protection (r^−4, not r^−6) | 2m |
 
 ## Quickstart
 
@@ -690,6 +729,7 @@ python3 page.py       # an evaporating horizon and the Page curve
 python3 quench.py     # the entanglement first law, time-resolved
 python3 graviton.py   # the twins: the slice datum the first law cannot see
 python3 knobs.py      # both sides of "tune every knob," measured in bits
+python3 einstein.py   # the forced equation: area price, equilibrium, protection
 ```
 
 Parts 19–20 run offline from the committed reductions
@@ -701,7 +741,7 @@ the raw Planck/WMAP archives (~7 GB, URLs and SHA-256 recorded inside), run
 ## The paper
 
 **[The Rendered Universe (PDF)](writeup/the-rendered-universe.pdf)** — the full
-research report: abstract, claim taxonomy, eighteen figures, an
+research report: abstract, claim taxonomy, nineteen figures, an
 objections-and-replies section, and a reproducibility appendix. The HTML source
 is [`writeup/paper.html`](writeup/paper.html).
 
