@@ -2,7 +2,7 @@
 
 # The Rendered Universe
 
-**Twenty-two runnable experiments on one hypothesis: the physical universe is
+**Twenty-three runnable experiments on one hypothesis: the physical universe is
 not a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
@@ -437,6 +437,45 @@ back from entropies alone; Einstein in the limb.*</sub>
 
 ---
 
+### 17 · Clocks slow, a hole forms, and the waterfall shines
+
+With Einstein's equation read off the ledger, part 23 builds the objects it
+is famous for. First, **time dilation, both kinds, no knobs**: cavity clocks
+at depth tick at √g<sub>00</sub> to four decimal places; a moving packet's
+internal phase clock follows m√(1−v²) out to v = 0.73, where the lattice's
+k⁴ correction shows through. Then a hole, two ways — and the render tells
+them apart. The **frozen star** (local light speed vanishing at r<sub>h</sub>)
+casts a shadow at the ray-traced critical impact parameter and freezes
+infall on the diverging metric integral ∫dr/c — until the blueshifted
+wavelength hits the lattice scale and the substrate *reflects* it, 99 ticks
+later: on a lattice, a frozen star is a mirror with divergent delay, not a
+trap. Real GR horizons are *rivers* (Painlevé: space flowing inward), and
+the river delivers: a flowing chart crossing c = 1 — Unruh's acoustic
+horizon — evolved with the chain's exact Gaussian state, emits a **steady
+Planck spectrum nobody put in** at T = 0.94 × κ/2π across two decades. The
+correlation map resolves **every quantum's infalling partner** (ridge within
+6 sites of the parameter-free locus — the partner lingers at the horizon
+before peeling away), radiation–interior entanglement grows 3.3 → 6.3 nats,
+and the global state stays pure to ν<sub>min</sub> = 0.5000. Thermal
+outside, pure overall: entropy is where you stop looking.
+
+<div align="center">
+<img src="films/horizon_infall.gif" width="520" alt="Infall at the frozen star">
+
+<sub>*Infall at the frozen star: the pile-up at the horizon ring — and then
+the substrate answers.*</sub>
+<br><br>
+<img src="films/horizon.png" width="820" alt="Horizons measured">
+
+<sub>*Both dilations on their GR curves; the shadow; the freeze meeting the
+wavelength wall; the Hawking spectrum on an unfitted Planck curve; and the
+partner streak on its predicted locus.*</sub>
+</div>
+
+— [`horizon.py`](horizon.py)
+
+---
+
 ## Every experiment
 
 | Part | Script | The question it asks | Headline result | ~time |
@@ -471,6 +510,7 @@ back from entropies alone; Einstein in the limb.*</sub>
 | 20 | `echo.py` | Does the signature echo in E-modes? | No echo (p 0.2–0.8) — and none was detectable: power 32% today, 98% at LiteBIRD | 26s |
 | 21 | `shear.py` | Can the surviving (tensor) gravity be built? | +/× ring patterns; silent monopole (exact); light bends 1.93× Newton (GR: 2) | 75s |
 | 22 | `firstlaw.py` | Can Einstein's equation be *read off* the ledger? | First law measured (0.98±0.04); heat/work priced apart; x² limb = the z² Einstein profile (AdS₃) | 8s |
+| 23 | `horizon.py` | Do clocks, black holes, and Hawking radiation follow? | Dilation on GR curves (no knobs); a frozen star that mirrors; steady Hawking flux at 0.94×κ/2π, partners resolved, state pure | 37s |
 
 ## Quickstart
 
@@ -484,6 +524,7 @@ python3 genesis.py    # or here: three postulates, universes as output
 python3 firstlight.py # the detector battery, pointed at the real CMB
 python3 echo.py       # the registered test, asked of E-mode polarization
 python3 firstlaw.py   # the entanglement first law, and Einstein in its limb
+python3 horizon.py    # clocks, a black hole, and Hawking radiation
 ```
 
 Parts 19–20 run offline from the committed reductions
@@ -495,7 +536,7 @@ the raw Planck/WMAP archives (~7 GB, URLs and SHA-256 recorded inside), run
 ## The paper
 
 **[The Rendered Universe (PDF)](writeup/the-rendered-universe.pdf)** — the full
-research report: abstract, claim taxonomy, thirteen figures, an
+research report: abstract, claim taxonomy, fourteen figures, an
 objections-and-replies section, and a reproducibility appendix. The HTML source
 is [`writeup/paper.html`](writeup/paper.html).
 
