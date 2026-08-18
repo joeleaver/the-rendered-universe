@@ -1,10 +1,11 @@
-"""Part 23: horizon — clocks slow, a hole forms, and the waterfall shines.
+"""Part 23: time dilation, horizons, and Hawking radiation.
 
-Part 22 read Einstein's equation off the entanglement ledger. This part
-builds the objects that equation is famous for. Two ways the render can
-hide a region: turn the local frame rate to zero (a frozen star), or
-drag the chart faster than anything can swim (a waterfall). The first
-freezes; the second shines.
+Part 22 obtained the linearized Einstein equation from the entanglement
+first law. This part builds horizon physics. There are two ways to hide
+a region behind a horizon: let the local propagation speed go to zero
+(a frozen star), or let the chart flow inward faster than the
+propagation speed (an acoustic horizon, the Painleve picture of a GR
+horizon). The first only delays; the second radiates.
 
   [89] clocks: time dilation measured directly, both kinds. Two
        identical cavity clocks at different depths of a well tick at
@@ -20,17 +21,16 @@ freezes; the second shines.
        wavelength wall and REFLECTS it: on a lattice, a frozen
        star is a mirror with divergent delay, not a trap. The
        trans-Planckian cutoff, measured in a telescope.
-  [91] the waterfall shines: a flowing chart crossing c = 1 makes an
-       acoustic horizon. The chain's exact Gaussian state, evolved
-       through the flow's switch-on, emits a STEADY thermal flux:
-       measured spectrum Planckian at T = kappa/2pi within ~6%, with
-       the partner of every quantum visibly falling inside (the
-       correlation moustache), radiation-interior entanglement
-       growing, and the global state exactly pure — Hawking 1974,
-       Unruh 1981, and the information ledger balanced to 10^-3.
-  [92] verdict: the sky's most famous objects, assembled from parts
-       the repository already owned. Owed: evaporation backreaction
-       (the hole never shrinks here), and with it the Page curve.
+  [91] the acoustic horizon radiates: a flow crossing c = 1, evolved
+       with the chain's exact Gaussian state through switch-on, emits
+       a STEADY thermal flux: measured spectrum Planckian at
+       T = kappa/2pi within ~6%, with each emitted quantum's partner
+       resolved falling inside (the correlation map), radiation-
+       interior entanglement growing, and the global state exactly
+       pure — Hawking 1974 and Unruh 1981, with the total state
+       verified pure to 10^-4.
+  [92] summary. Owed at this point: evaporation backreaction (this
+       hole never shrinks), and with it the Page curve.
 """
 import math
 import time
@@ -514,7 +514,7 @@ def infall_gif(frames, path):
                 2 * (CY - y0 + R_H * math.sin(a))) for a in th]
         d.line(pts + [pts[0]], fill=(90, 130, 200), width=2)
         d.text((6, 4), 'infall at the frozen star: pile-up at the '
-               'horizon ring - then the substrate answers',
+               'horizon ring, then reflects',
                fill=(200, 200, 190))
         ims.append(im)
     ims[0].save(path, save_all=True, append_images=ims[1:],
@@ -530,8 +530,8 @@ def figure(gclk, mclk, cap, bcrit, fr, pred, r_pin, wf, path):
     W, H = 1560, 880
     img = Image.new('RGB', (W, H), BG)
     d = ImageDraw.Draw(img)
-    d.text((20, 12), 'PART 23 - HORIZON: clocks slow, a hole forms, '
-           'and the waterfall shines', fill=INK)
+    d.text((20, 12), 'PART 23 - TIME DILATION, HORIZONS, AND HAWKING '
+           'RADIATION', fill=INK)
 
     # (a) clocks
     ax0, ay0, ax1, ay1 = 60, 70, 480, 330
@@ -663,10 +663,10 @@ def figure(gclk, mclk, cap, bcrit, fr, pred, r_pin, wf, path):
     cpts = [exy(xo_, xi_) for xo_, xi_ in wf['curve']
             if xout0 <= xo_ <= xout0 + nout and xin0 <= xi_]
     d.line(cpts, fill=C_GREEN, width=2)
-    d.text((ex0, ey0 - 30), '[91] every quantum\'s partner: <pi pi> '
+    d.text((ex0, ey0 - 30), '[91] each quantum\'s partner: <pi pi> '
            'correlations, interior (y) x exterior (x).', fill=INK)
-    d.text((ex0, ey0 - 14), 'The streak: pairs born at the horizon, one '
-           'out at c, one swept in at |v|-c.', fill=MUTED)
+    d.text((ex0, ey0 - 14), 'The ridge: pairs created at the horizon, '
+           'one out at c, one carried in at |v|-c.', fill=MUTED)
     d.text((ex0, ey0 + eh + 6), 'green: predicted locus (quantum out at '
            'c; partner dx/dt = v+1 from one site', fill=C_GREEN)
     d.text((ex0, ey0 + eh + 22), f'behind the horizon) - measured ridge '
@@ -676,19 +676,19 @@ def figure(gclk, mclk, cap, bcrit, fr, pred, r_pin, wf, path):
     # (f) verdict
     vx, vy = 1240, 430
     lines = [
-        ('the ledger, audited:', INK),
+        ('summary:', INK),
         ('', INK),
         (f'radiation thermal (T = {wf["T_meas"] / T_HAWK:.2f} x', C_ORANGE),
         ('kappa/2pi), steady in time; its', C_ORANGE),
         (f'entanglement with the interior grows', C_ORANGE),
         (f'(dMI = {wf["mi"][350]:.2f} -> {wf["mi"][650]:.2f} nats); and', C_ORANGE),
-        ('the global state stays PURE', C_ORANGE),
+        ('the global state stays pure', C_ORANGE),
         (f'(nu_min = {wf["nu_min"]:.4f}; pure: 0.5).', C_ORANGE),
         ('', INK),
-        ('Thermal outside, pure overall:', INK),
-        ('the information paradox is the', INK),
-        ('render\'s oldest trick - entropy', INK),
-        ('is where you stop looking.', INK),
+        ('The radiation alone is thermal', INK),
+        ('while the total state is pure:', INK),
+        ('entropy here is a property of', INK),
+        ('the restricted description.', INK),
         ('', INK),
         ('Owed: backreaction (this hole', MUTED),
         ('never shrinks), and with it', MUTED),
@@ -704,8 +704,7 @@ def figure(gclk, mclk, cap, bcrit, fr, pred, r_pin, wf, path):
 def main():
     t00 = time.time()
     print('=' * 68)
-    print('PART 23: HORIZON — CLOCKS SLOW, A HOLE FORMS,')
-    print('         AND THE WATERFALL SHINES')
+    print('PART 23: TIME DILATION, HORIZONS, AND HAWKING RADIATION')
     print('=' * 68)
     print()
 
@@ -745,8 +744,7 @@ def main():
     print('     same geometry, different profile).')
     fr, pred, r_pin, t_ret, frames = approach_run()
     dev = float(np.mean(np.abs(fr[:, 1] - pred) / np.clip(pred, 1, None)))
-    print('     the approach: arrival time of the infalling front vs the '
-          'metric')
+    print('     arrival times: the infalling front vs the metric')
     print(f'     integral int dr/c (drawn, not fitted): mean deviation '
           f'{100 * dev:.0f}% over')
     print(f'     r = 60 down to {fr[0, 0]:.0f}; the integral diverges '
@@ -755,28 +753,24 @@ def main():
           'wavelength wall')
     print(f'     (predicted pinning radius {r_pin:.0f}, where the '
           'blueshifted k reaches the')
-    print('     lattice edge). What happens then is the honest surprise: '
-          'the wall')
+    print('     lattice edge). What happens at the wall: it')
     if t_ret is not None:
         print(f'     REFLECTS -- the annulus at r = 50 lights up again '
               f'{t_ret:.0f} ticks after')
-        print('     infall. On this substrate a frozen star is a mirror '
-              'with divergent')
-        print('     delay, not a trap: slowing the frame rate only '
-              'postpones light.')
+        print('     infall. On a lattice a frozen star delays light '
+              'arbitrarily long but')
+        print('     does not trap it.')
     else:
         print('     reflects (no return pulse resolved in this run '
               'window).')
-    print('     Real GR horizons are not frozen stars: in Painleve '
-          'coordinates they')
-    print('     are RIVERS -- space flowing inward -- which is exactly '
-          'the next')
-    print('     experiment, and the river does what the freezer '
-          'cannot.')
+    print('     A GR horizon is better modeled in Painleve '
+          'coordinates: space flowing')
+    print('     inward through a static frame. That flow is the next '
+          'experiment.')
     print(f'     [{time.time() - t00:.0f}s]')
     print()
 
-    print('[91] the waterfall: a flowing chart crossing c = 1 '
+    print('[91] the acoustic horizon: a flow crossing c = 1 '
           f'(kappa = {KAPPA_F:.3f}),')
     print('     the chain\'s exact Gaussian state evolved through '
           'switch-on:')
@@ -796,25 +790,26 @@ def main():
               f'{wf["spectra"][650][i]:.4f}   Planck(kappa/2pi) {pl:.4f}')
     print(f'     T_measured = {wf["T_meas"]:.4f} vs kappa/2pi = '
           f'{TH:.4f}  (ratio {wf["T_meas"] / TH:.2f})')
-    print('     — a Planck spectrum nobody put in, steady between '
+    print('     — a Planck spectrum not put in by hand, steady between '
           't=500 and t=650.')
     print(f'     the partner streak: ridge within {wf["ridge_dev"]:.0f} '
           'sites of the parameter-free locus')
     print('     (quantum out at c; partner dx/dt = v+1 from one site '
           'behind the horizon);')
     print(f'     asymptotic drift slope {wf["m_slope"]:.2f} vs '
-          '(|v|-c)/c = 0.40. The partner LINGERS')
-    print('     at the horizon before peeling away — the same '
-          'exponential peeling that')
-    print('     makes the spectrum thermal, seen in the correlations.')
-    print(f'     the ledger: radiation-interior mutual information grows '
-          f'{wf["mi"][350]:.2f} ->')
+          '(|v|-c)/c = 0.40. The partner stays near')
+    print('     the horizon before separating — the same exponential '
+          'peeling that makes')
+    print('     the spectrum thermal, visible in the correlations.')
+    print(f'     entanglement: radiation-interior mutual information '
+          f'grows {wf["mi"][350]:.2f} ->')
     print(f'     {wf["mi"][500]:.2f} -> {wf["mi"][650]:.2f} nats while '
           f'the GLOBAL state stays pure:')
-    print(f'     nu_min = {wf["nu_min"]:.4f} (pure: 0.5000). Thermal '
-          'outside, pure overall —')
-    print('     the "paradox" is bookkeeping: entropy is where you '
-          'stop looking.')
+    print(f'     nu_min = {wf["nu_min"]:.4f} (pure: 0.5000): the '
+          'radiation alone is thermal')
+    print('     while the total state is pure — the same relation '
+          'between coarse and')
+    print('     exact descriptions as the entropy of part 9.')
     print('     Trans-Planckian note: on this lattice the flux is '
           'steady BECAUSE')
     print('     dispersion feeds the horizon from the substrate '
@@ -824,15 +819,14 @@ def main():
     print(f'     [{time.time() - t00:.0f}s]')
     print()
 
-    print('[92] verdict: dilation on the GR curves to 4 decimals; a')
-    print('     shadow at the ray-traced critical impact parameter; an')
-    print('     infall that freezes on the metric integral until the')
-    print('     substrate turns mirror; and a flowing chart that shines')
-    print('     thermally at kappa/2pi while the ledger stays exactly pure.')
-    print('     The sky\'s most famous objects assembled from parts the')
-    print('     repository already owned. Owed, stated plainly:')
-    print('     evaporation backreaction — this hole never shrinks —')
-    print('     and with it the Page curve.')
+    print('[92] summary: both time dilations on their GR curves to 4')
+    print('     decimals; a photon shadow at the ray-traced critical')
+    print('     impact parameter; infall following the metric integral')
+    print('     until the lattice reflects it; and an acoustic horizon')
+    print('     radiating thermally at kappa/2pi while the global state')
+    print('     stays exactly pure. Owed at this point: evaporation')
+    print('     backreaction — this hole never shrinks — and with it')
+    print('     the Page curve.')
 
     figure(gclk, mclk, cap, bc, fr, pred, r_pin, wf, 'films/horizon.png')
     infall_gif(frames, 'films/horizon_infall.gif')

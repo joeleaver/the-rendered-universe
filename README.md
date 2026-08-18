@@ -2,7 +2,7 @@
 
 # The Rendered Universe
 
-**Twenty-three runnable experiments on one hypothesis: the physical universe is
+**Twenty-four runnable experiments on one hypothesis: the physical universe is
 not a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
@@ -336,23 +336,23 @@ today, 98% when LiteBIRD-class data arrives.*</sub>
 [`tools/fetch_pol.py`](tools/fetch_pol.py) into
 [`data/realsky_pol.npz`](data/realsky_pol.npz)
 
-### 14 · The races the sky already ran
+### 14 · Gravitational-wave tests against observation
 
 Part 18 (the long-reserved slot) gives the metric its own wave equation — same
 lattice, same stencil, same tick as matter — and collects the verdicts reality
-has already delivered on the architecture's variants. **The one-cone race**: a
+has already delivered on the architecture's variants. **The propagation-speed test**: a
 photon and a metric pulse from one event arrive *bit-identically* — one
 substrate means one dispersion relation, an identity, not a tuning — while a
 deliberately built two-substrate engine (gravity on its own stencil) loses by
-half the track. The sky ran this race: GW170817's gamma rays trailed the chirp
-by 1.7 s across 40 Mpc, |Δc/c| < 3×10⁻¹⁵ — two-substrate engines dead by
-fourteen orders of magnitude. **The polarization race, which our own variant
-loses**: a scalar metric strains rulers *along* the wave as much as across it
+half the track. Observation has already made this comparison: GW170817's gamma rays trailed
+the chirp by 1.7 s across 40 Mpc, |Δc/c| < 3×10⁻¹⁵ — two-substrate engines
+excluded by fourteen orders of magnitude. **The polarization test, which our
+own variant fails**: a scalar metric strains rulers *along* the wave as much as across it
 (measured: longitudinal/transverse = 0.94; GR says 0), and LIGO-Virgo favor
-pure tensor — so scalar-metric render gravity is excluded by the real sky,
-and the program provably owes a tensor metric. The sky has now executed two
-variants (lattice substrate in part 10, scalar metric here); what survives is
-sprinkle-like discreteness plus tensor-metric gravity.
+pure tensor — so scalar-metric render gravity is excluded by observation,
+and the program owes a tensor metric. Observation has now eliminated two
+variants (a rigid lattice substrate in part 10, a scalar metric here); what
+survives is sprinkle-like discreteness plus tensor-metric gravity.
 
 <div align="center">
 <img src="films/ripple.png" width="820" alt="Toy gravitational waves and the sky's verdicts">
@@ -364,7 +364,7 @@ breathing-mode strain that LIGO rules out; and the Δc/c ladder.*</sub>
 
 — [`ripple.py`](ripple.py)
 
-### 15 · Gravity grows a tensor
+### 15 · Linearized tensor gravity
 
 Part 18 killed the scalar, so part 21 builds the survivor: linearized tensor
 gravity, h<sub>ij</sub> on the lattice — in 3D, because transverse-traceless
@@ -400,79 +400,122 @@ and the factor-2 light bending.*</sub>
 
 ---
 
-### 16 · The ledger prices heat, and Einstein is in the bill
+### 16 · The entanglement first law
 
-Part 21 left the field equation postulated. Jacobson's program says it should
-never need postulating: gravity is the thermodynamics of the entanglement
-ledger — δQ = TδS — with Faulkner et al.'s sharpening that the entanglement
-*first law*, holding for all regions at once, **is** the linearized Einstein
-equation. Part 22 climbs the first camp on a critical fermion chain where
-every entropy is exact. Heat it globally: ΔS of **every interval at every
-temperature** collapses onto the parameter-free CFT curve ⅓ln(sinh x/x)
-(Stefan–Boltzmann's π/12 measured en route); the small-x limb *is* the first
-law (ΔS = Δ⟨K⟩ at 0.98 ± 0.04, the parabolic kernel carrying no knobs), and
-the bend beyond it is Bekenstein's bound — never once violated. The ledger
-prices heat and work apart, exactly as Clausius wrote: a pure particle's
-entropy lives only at the entangling cut (0.91 bit while straddling it,
-2×10⁻⁵ deep inside, while its modular energy keeps climbing — work: fully
-priced, entropy-free), and a classically mixed packet pays exactly h₂(λ)
-anywhere it sits (match 0.9999). Across a landscape of two warm hills the
-kernel predicts every sliding interval's ΔS at r = 0.9997 — then inverts:
-the energy landscape read back from entropies alone (r = 0.9996). And the
-turn: the limb scales as x^1.98, which through the Ryu–Takayanagi dictionary
-is a bulk response h ∝ z² — the *unique static solution of the linearized
-Einstein equations in AdS₃*. A mass gap frays the emergent depth; hard lumps
-never build it. Only soft heat writes geometry — which is Jacobson's δQ,
-rediscovered by the instrument.
+Part 21 postulated the field equation; Jacobson's program says it should
+follow from thermodynamics — δQ = TδS across local horizons — and Faulkner
+et al. sharpened this: the entanglement *first law*, holding for all regions
+at once, **is** the linearized Einstein equation. Part 22 carries out the
+first step on a critical fermion chain where every entropy is exact. Heated
+globally, ΔS of **every interval at every temperature** collapses onto the
+parameter-free CFT curve ⅓ln(sinh x/x), with Stefan–Boltzmann's π/12
+measured along the way; the small-x part *is* the first law (ΔS = Δ⟨K⟩ at
+0.98 ± 0.04, the parabolic kernel containing no free parameters), and the
+departure beyond it is Bekenstein's bound, never once violated. The first
+law distinguishes heat from work: a pure particle changes a region's
+entropy only while straddling the entangling cut (0.91 bit at the cut,
+2×10⁻⁵ once inside, even as its modular energy keeps growing), while a
+classically mixed packet contributes exactly its mixing entropy h₂(λ) at
+any position (match 0.9999). Across a landscape of two warm regions the
+kernel predicts every sliding interval's ΔS at r = 0.9997, and inverting it
+recovers the energy distribution from entropies alone (r = 0.9996).
+Finally, the small-x response scales as x^1.98, which through the
+Ryu–Takayanagi dictionary is a bulk response h ∝ z² — the *unique static
+solution of the linearized Einstein equations in AdS₃*. A mass gap destroys
+the correspondence beyond the correlation length, and localized non-thermal
+excitations never produce it: the first law holds in the thermal sector,
+which is exactly the δQ in Jacobson's argument.
 
 <div align="center">
 <img src="films/firstlaw.png" width="820" alt="The entanglement first law, measured">
 
 <sub>*One parameter-free curve for every interval at every temperature (a
-gapped chain falls off it); heat vs work at the cut; a heat landscape read
-back from entropies alone; Einstein in the limb.*</sub>
+gapped chain departs from it); heat vs work at the entangling cut; an energy
+distribution recovered from entropies alone; the x² scaling that maps to
+linearized Einstein gravity.*</sub>
 </div>
 
 — [`firstlaw.py`](firstlaw.py)
 
 ---
 
-### 17 · Clocks slow, a hole forms, and the waterfall shines
+### 17 · Time dilation, black holes, and Hawking radiation
 
-With Einstein's equation read off the ledger, part 23 builds the objects it
-is famous for. First, **time dilation, both kinds, no knobs**: cavity clocks
-at depth tick at √g<sub>00</sub> to four decimal places; a moving packet's
-internal phase clock follows m√(1−v²) out to v = 0.73, where the lattice's
-k⁴ correction shows through. Then a hole, two ways — and the render tells
-them apart. The **frozen star** (local light speed vanishing at r<sub>h</sub>)
-casts a shadow at the ray-traced critical impact parameter and freezes
-infall on the diverging metric integral ∫dr/c — until the blueshifted
-wavelength hits the lattice scale and the substrate *reflects* it, 99 ticks
-later: on a lattice, a frozen star is a mirror with divergent delay, not a
-trap. Real GR horizons are *rivers* (Painlevé: space flowing inward), and
-the river delivers: a flowing chart crossing c = 1 — Unruh's acoustic
-horizon — evolved with the chain's exact Gaussian state, emits a **steady
-Planck spectrum nobody put in** at T = 0.94 × κ/2π across two decades. The
-correlation map resolves **every quantum's infalling partner** (ridge within
-6 sites of the parameter-free locus — the partner lingers at the horizon
-before peeling away), radiation–interior entanglement grows 3.3 → 6.3 nats,
-and the global state stays pure to ν<sub>min</sub> = 0.5000. Thermal
-outside, pure overall: entropy is where you stop looking.
+Part 23 builds horizon physics from the pieces already in the repository.
+First, **time dilation, both kinds, with no fitted parameters**: cavity
+clocks at depth tick at √g<sub>00</sub> to four decimal places, and a moving
+packet's internal phase clock follows m√(1−v²) out to v = 0.73, where the
+lattice's k⁴ dispersion correction becomes visible. Then a black hole, two
+ways. The **frozen star** (local light speed vanishing at r<sub>h</sub>)
+casts a photon shadow at the ray-traced critical impact parameter, and
+infalling light follows the diverging metric integral ∫dr/c — until its
+blueshifted wavelength reaches the lattice scale and is *reflected*, 99
+ticks later: on a lattice, a frozen star delays light arbitrarily long but
+does not trap it. A real GR horizon is better modeled the second way
+(Painlevé coordinates: space flowing inward): a flow profile crossing
+c = 1 — Unruh's **acoustic horizon** — evolved with the chain's exact
+Gaussian state, emits a **steady Planck spectrum that was not put in by
+hand**, at T = 0.94 × κ/2π across two decades. The correlation map resolves
+**each quantum's infalling partner** (correlation ridge within 6 sites of
+the parameter-free predicted trajectory; the partner stays near the horizon
+before separating), radiation–interior entanglement grows 3.3 → 6.3 nats,
+and the global state stays pure to ν<sub>min</sub> = 0.5000: the radiation
+alone is thermal while the total state is pure.
 
 <div align="center">
 <img src="films/horizon_infall.gif" width="520" alt="Infall at the frozen star">
 
-<sub>*Infall at the frozen star: the pile-up at the horizon ring — and then
-the substrate answers.*</sub>
+<sub>*Infall at the frozen star: energy piles up at the horizon ring, then
+is reflected by the lattice cutoff.*</sub>
 <br><br>
 <img src="films/horizon.png" width="820" alt="Horizons measured">
 
-<sub>*Both dilations on their GR curves; the shadow; the freeze meeting the
-wavelength wall; the Hawking spectrum on an unfitted Planck curve; and the
-partner streak on its predicted locus.*</sub>
+<sub>*Both time dilations on their GR curves; the photon shadow; arrival
+times following the metric integral to the lattice cutoff; the Hawking
+spectrum on an unfitted Planck curve; the partner correlations on the
+predicted trajectory.*</sub>
 </div>
 
 — [`horizon.py`](horizon.py)
+
+---
+
+### 18 · Evaporation and the Page curve
+
+Part 23's horizon radiated but never shrank, so its radiation entropy could
+only grow — Hawking's calculation, and his information paradox. Part 24 lets
+the hole evaporate, on the part-22 fermion chain (the flow is an imaginary
+second-neighbor hopping — a 1D type-II Weyl horizon), where evolution is
+exactly unitary and every entropy is exact. First, statistics: the same
+surface gravity that gave bosons a Planck spectrum gives fermions
+**Fermi–Dirac at the same κ/2π** (ratio 0.98 over two decades, particles and
+holes symmetric) — temperature from geometry, statistics from matter. A hole
+only 20% past critical stops radiating above ~3 T<sub>H</sub>: the
+**trans-Planckian cutoff** of Corley–Jacobson, measured. Then the flow
+retreats, overtaking and releasing the stored partner quanta, and three
+curves are computed for the radiation entropy: the **exact** one (computable
+because the global state is pure) rises, turns over at t = 379, and returns
+to zero — unitarity, verified to 10⁻¹²; the **extrapolation at the measured
+early rate** climbs to 10.2 nats and never turns — Hawking's curve; and the
+**island formula**, using one measured constant (μ = 0.36 nats per cut, the
+vacuum entanglement across one cut = the induced 1/4G of Susskind–Uglum),
+tracks the exact curve to 0.78 nats mean, its optimal island holding the
+partner quanta. Stated plainly in the output: the retreat schedule and the
+island rule itself are inputs, not derivations — real gravity justifies the
+latter via replica wormholes, and whether the universe's engine implements
+that identification remains the information-paradox question of the axiom
+collider.
+
+<div align="center">
+<img src="films/page.png" width="820" alt="The Page curve, measured">
+
+<sub>*The three radiation-entropy curves — exact (rise, turnover, return),
+Hawking's never-turning extrapolation, and the island formula with a
+measured area price — plus the Fermi–Dirac spectrum and the evaporation
+history.*</sub>
+</div>
+
+— [`page.py`](page.py)
 
 ---
 
@@ -505,12 +548,13 @@ partner streak on its predicted locus.*</sub>
 | 15 | `renderware.py` | What does quantum computation cost a classical engine? | The smallest engine, not the qubit count | 3s |
 | 16 | `universal.py` | Can gravity be universal instead of chromatic? | Metric coupling: achromatic, attractive, Eötvös-passing | 2s |
 | 17 | `genesis.py` | Do the three postulates actually run? | Universes from ~50 bytes; space by intervention (r = 0.89) | 5s |
-| 18 | `ripple.py` | Can gravity wave — and what does the sky say? | One cone: exact (sky: <3×10⁻¹⁵ ✓); scalar polarization: killed by LIGO | 6s |
+| 18 | `ripple.py` | Can gravity wave — and what does observation say? | c_gw = c_γ exact (observed: <3×10⁻¹⁵ ✓); scalar polarization excluded by LIGO | 6s |
 | 19 | `firstlight.py` | What does the *real* sky say? | Anomalies reproduced from raw bytes; joint p = 0.003–0.013; no mirror rule | 47s |
 | 20 | `echo.py` | Does the signature echo in E-modes? | No echo (p 0.2–0.8) — and none was detectable: power 32% today, 98% at LiteBIRD | 26s |
 | 21 | `shear.py` | Can the surviving (tensor) gravity be built? | +/× ring patterns; silent monopole (exact); light bends 1.93× Newton (GR: 2) | 75s |
-| 22 | `firstlaw.py` | Can Einstein's equation be *read off* the ledger? | First law measured (0.98±0.04); heat/work priced apart; x² limb = the z² Einstein profile (AdS₃) | 8s |
-| 23 | `horizon.py` | Do clocks, black holes, and Hawking radiation follow? | Dilation on GR curves (no knobs); a frozen star that mirrors; steady Hawking flux at 0.94×κ/2π, partners resolved, state pure | 37s |
+| 22 | `firstlaw.py` | Does the entanglement first law yield Einstein's equation? | First law measured (0.98±0.04); holds for heat, not work; x² scaling = the z² Einstein profile (AdS₃) | 8s |
+| 23 | `horizon.py` | Do clocks, black holes, and Hawking radiation follow? | Dilation on GR curves (no fits); a frozen star that reflects; steady Hawking flux at 0.94×κ/2π, partners resolved, state pure | 37s |
+| 24 | `page.py` | Does an evaporating horizon obey the Page curve? | Exact entropy: rise, turnover, return to zero; island formula tracks it to 0.8 nats with a measured 1/4G | 3m |
 
 ## Quickstart
 
@@ -525,6 +569,7 @@ python3 firstlight.py # the detector battery, pointed at the real CMB
 python3 echo.py       # the registered test, asked of E-mode polarization
 python3 firstlaw.py   # the entanglement first law, and Einstein in its limb
 python3 horizon.py    # clocks, a black hole, and Hawking radiation
+python3 page.py       # an evaporating horizon and the Page curve
 ```
 
 Parts 19–20 run offline from the committed reductions
@@ -536,7 +581,7 @@ the raw Planck/WMAP archives (~7 GB, URLs and SHA-256 recorded inside), run
 ## The paper
 
 **[The Rendered Universe (PDF)](writeup/the-rendered-universe.pdf)** — the full
-research report: abstract, claim taxonomy, fourteen figures, an
+research report: abstract, claim taxonomy, fifteen figures, an
 objections-and-replies section, and a reproducibility appendix. The HTML source
 is [`writeup/paper.html`](writeup/paper.html).
 

@@ -1,40 +1,38 @@
-"""Part 22: the first law — the ledger prices heat, and Einstein is in the bill.
+"""Part 22: the entanglement first law.
 
-Part 21 ended with a debt named out loud: the tensor's dynamics were
-postulated (box h = -kappa T), not derived. Jacobson's program says the
-field equation should never need postulating — gravity is the
-thermodynamics of the entanglement ledger, and the Einstein equation is
-its equation of state (delta-Q = T delta-S across local horizons;
-Faulkner et al.'s sharpening: the entanglement first law for all
-regions IS the linearized Einstein equation). This part climbs the
-first measurable rung on the Gaussian observatory of part 4: a critical
-fermion chain, where every entropy is exact and every state auditable.
+Part 21 postulated the tensor's dynamics (box h = -kappa T). Jacobson's
+program says the field equation should follow from thermodynamics —
+delta-Q = T delta-S across local horizons — and Faulkner et al.
+sharpened this: the entanglement first law, holding for all regions at
+once, IS the linearized Einstein equation. This part carries out the
+first step on the Gaussian observatory of part 4: a critical fermion
+chain, where every entropy is exact.
 
-  [85] the one curve: global heat at temperature T; the entropy change
-       of every interval, at every temperature, collapses onto the
+  [85] global heat at temperature T: the entropy change of every
+       interval, at every temperature, collapses onto the
        parameter-free CFT curve (1/3)ln(sinh x / x), x = pi*l*T/v.
        Its small-x limb IS the first law delta-S = delta<K> with the
        modular weight measured en route (Stefan-Boltzmann pi/12 too);
-       its large-x bend is Bekenstein slack: delta<K> >= delta-S,
-       always, measured.
-  [86] heat vs work — the price list: three ways to hand the ledger
-       the same energy. Soft heat: charged at 1/T_Unruh, first law
-       exact. A pure particle: entropy only while it straddles the
-       cut (about one bit), silent once inside — work, infinitely
-       distinguishable. A classically mixed packet: charged exactly
-       its mixing entropy h2(lambda), blind to position. Clausius'
-       delta-Q = T delta-S was about HEAT for a reason.
-  [87] reading the landscape: two warm hills on the chain; every
-       interval's delta-S predicted by the parabolic modular kernel
-       (r ~ 0.99, no fitted parameters), then inverted — the energy
-       landscape read back off entropies alone.
-  [88] the depth law: the small-x limb scales as l^2.0 — through the
+       beyond it, delta<K> >= delta-S — the Bekenstein bound — holds
+       everywhere, measured.
+  [86] heat versus work: three perturbations with the same energy.
+       Thermal heat satisfies the first law exactly. A pure particle
+       changes a region's entropy only while it straddles the cut
+       (about one bit), and not at all once inside, even as its
+       modular energy grows. A classically mixed packet contributes
+       exactly its mixing entropy h2(lambda), at any position. The
+       first law is a statement about heat, as in thermodynamics.
+  [87] two warm regions on the chain: every interval's delta-S is
+       predicted by the parabolic modular kernel (r ~ 0.999, no
+       fitted parameters), and inverting the kernel recovers the
+       energy distribution from entropies alone.
+  [88] the small-x response scales as l^2.0 — through the
        Ryu-Takayanagi dictionary (installed, like the Born rule of
        part 7) that is a bulk metric response h ~ z^2, the unique
        static solution of the LINEARIZED EINSTEIN EQUATIONS in AdS3
        (Faulkner-Guica-Hartman-Myers-Van Raamsdonk). A mass gap
-       frays the depth beyond v/gap; hard lumps never build it.
-       Einstein's equation is read off the ledger, not posited.
+       destroys the scaling beyond v/gap, and localized non-thermal
+       excitations never produce it.
 """
 import math
 import time
@@ -286,8 +284,7 @@ def figure(pts, gap_pts, slope, ref, pure, mixed, Tprof, e, cs, dSs, dKs,
     W, H = 1560, 860
     img = Image.new('RGB', (W, H), BG)
     d = ImageDraw.Draw(img)
-    d.text((20, 12), 'PART 22 - THE FIRST LAW: the ledger prices heat, '
-           'and Einstein is in the bill', fill=INK)
+    d.text((20, 12), 'PART 22 - THE ENTANGLEMENT FIRST LAW', fill=INK)
 
     # (a) the one curve, log-log, with the gapped chain falling off it
     ax0, ay0, ax1, ay1 = 70, 70, 730, 420
@@ -315,22 +312,23 @@ def figure(pts, gap_pts, slope, ref, pure, mixed, Tprof, e, cs, dSs, dKs,
         px, py = axy(x, max(dS, yr[0]))
         d.line([(px - 4, py - 4), (px + 4, py + 4)], fill=MUTED, width=2)
         d.line([(px - 4, py + 4), (px + 4, py - 4)], fill=MUTED, width=2)
-    d.text((ax0, ay0 - 42), '[85/88] the one curve: delta-S of every '
-           'interval at every temperature vs x = pi*l*T/v.', fill=INK)
+    d.text((ax0, ay0 - 42), '[85/88] delta-S of every interval at every '
+           'temperature vs x = pi*l*T/v.', fill=INK)
     d.text((ax0, ay0 - 26), 'line: (1/3)ln(sinh x/x), no parameters. '
            'rings: measured (T color-coded). x marks: gapped', fill=MUTED)
-    d.text((ax0, ay0 - 10), 'chain (mass 0.5) - the depth frays. '
-           f'small-x limb slope {slope:.2f} (Einstein z^2 law: 2.00)',
+    d.text((ax0, ay0 - 10), 'chain (mass 0.5) departing from it. '
+           f'small-x slope {slope:.2f} (Einstein z^2 law: 2.00)',
            fill=MUTED)
     px, py = axy(0.4, cft_curve(0.4))
-    d.text((px - 40, py + 16), 'first-law limb ~ x^2', fill=C_GREEN)
+    d.text((px - 40, py + 16), 'first-law region ~ x^2', fill=C_GREEN)
     px, py = axy(8, cft_curve(8))
-    d.text((px - 130, py - 20), 'Bekenstein slack: dK > dS', fill=MUTED)
+    d.text((px - 130, py - 20), 'Bekenstein bound: dK > dS', fill=MUTED)
 
     # (b) the price list
     bx0, by0, bx1, by1 = 830, 70, 1520, 420
-    d.text((bx0, by0 - 42), '[86] heat vs work: a particle\'s entropy '
-           'lives at the cut; a mixed packet pays h2 anywhere.', fill=INK)
+    d.text((bx0, by0 - 42), '[86] heat vs work: a pure particle changes '
+           'dS only near the cut; a mixed packet adds h2 anywhere.',
+           fill=INK)
     d.text((bx0, by0 - 26), 'orange: PURE particle, delta-S vs depth '
            '(peak ~ one bit straddling the cut, zero inside).', fill=MUTED)
     d.text((bx0, by0 - 10), 'blue: same packet, classically mixed '
@@ -354,8 +352,8 @@ def figure(pts, gap_pts, slope, ref, pure, mixed, Tprof, e, cs, dSs, dKs,
            '(negative: outside the interval)', fill=MUTED)
     d.text((bx0, by1 + 26), 'the particle\'s modular energy keeps rising '
            'with depth while its entropy dies:', fill=MUTED)
-    d.text((bx0, by1 + 42), 'dK/dS ~ 50 at depth 4, ~10^6 at depth 12 - '
-           'work: fully priced, entropy-free.', fill=MUTED)
+    d.text((bx0, by1 + 42), 'dK/dS ~ 50 at depth 4, ~10^6 at depth 12: '
+           'modular energy without entropy.', fill=MUTED)
 
     # (c) the landscape read
     cx0, cy0, cx1, cy1 = 70, 500, 730, 800
@@ -386,23 +384,23 @@ def figure(pts, gap_pts, slope, ref, pure, mixed, Tprof, e, cs, dSs, dKs,
     # (d) verdict
     vx = 830
     lines = [
-        ('the verdict:', INK),
+        ('summary:', INK),
         ('', INK),
-        ('measured: the first law dS = dK for soft heat (the one', INK),
-        ('curve, no parameters); Stefan-Boltzmann pi/12; Bekenstein', INK),
-        ('dK >= dS in every family, saturated only by heat; work', INK),
-        ('and mixing priced separately (Clausius vindicated).', INK),
+        ('measured: the first law dS = dK for thermal', INK),
+        ('perturbations (one parameter-free curve);', INK),
+        ('Stefan-Boltzmann pi/12; the Bekenstein bound', INK),
+        ('dK >= dS in every case, saturated only by heat;', INK),
+        ('work and mixing enter separately.', INK),
         ('', INK),
-        (f'the depth law: limb slope {slope:.2f} -> through the RT', C_ORANGE),
-        ('dictionary [installed], the bulk response is h ~ z^2 -', C_ORANGE),
-        ('the unique static solution of the LINEARIZED EINSTEIN', C_ORANGE),
-        ('EQUATIONS in AdS3. The field equation is read off the', C_ORANGE),
-        ('ledger. A mass gap frays the depth; hard lumps never', C_ORANGE),
-        ('build it: only soft heat writes geometry.', C_ORANGE),
+        (f'small-x slope {slope:.2f}: through the RT dictionary', C_ORANGE),
+        ('(an installed component) the bulk response is', C_ORANGE),
+        ('h ~ z^2 - the unique static solution of the', C_ORANGE),
+        ('LINEARIZED EINSTEIN EQUATIONS in AdS3. A mass', C_ORANGE),
+        ('gap destroys the scaling; localized non-thermal', C_ORANGE),
+        ('excitations never produce it.', C_ORANGE),
         ('', INK),
-        ('owed still: dynamics (time-dependent Einstein), flat-', MUTED),
-        ('space asymptotics, and Newton\'s constant from the', MUTED),
-        ('cutoff - the summit above this camp.', MUTED),
+        ('still owed: time-dependent dynamics, flat-space', MUTED),
+        ('asymptotics, and Newton\'s constant from the cutoff.', MUTED),
     ]
     for i, (txt, col) in enumerate(lines):
         d.text((vx, 500 + i * 18), txt, fill=col)
@@ -414,8 +412,7 @@ def figure(pts, gap_pts, slope, ref, pure, mixed, Tprof, e, cs, dSs, dKs,
 def main():
     t00 = time.time()
     print('=' * 68)
-    print('PART 22: THE FIRST LAW — THE LEDGER PRICES HEAT,')
-    print('         AND EINSTEIN IS IN THE BILL')
+    print('PART 22: THE ENTANGLEMENT FIRST LAW')
     print('=' * 68)
     print()
     print('Matter: the critical hopping-fermion chain (the observatory\'s')
@@ -444,7 +441,7 @@ def main():
     print('       every ratio below is honest only above this floor.')
     print()
 
-    print('[85] the one curve (global heat, every interval, every T):')
+    print('[85] thermal interval entropies (global heat, every interval, every T):')
     pts = one_curve(H, w, v, C0, c0)
     for T in (0.01, 0.02, 0.04, 0.08):
         sub = [p for p in pts if p['T'] == T]
@@ -455,23 +452,23 @@ def main():
     rs = [p['dS'] / cft_curve(p['x']) for p in pts if p['x'] > 0.35]
     print(f'     collapse onto (1/3)ln(sinh x/x): dS/curve = '
           f'{np.mean(rs):.3f} +/- {np.std(rs):.3f} over {len(rs)} '
-          'points (x > 0.35),')
-    print('       one parameter-free curve for a 16x range of T and l.')
+          'points (x > 0.35) —')
+    print('       one parameter-free curve across a 16x range of T and l.')
     rk_s = [p['dK'] / p['dS'] for p in small]
     rk_l = [p['dK'] / p['dS'] for p in large]
-    print(f'     first-law limb (x in [0.35, 1.2]):  dK/dS = '
+    print(f'     first-law region (x in [0.35, 1.2]):  dK/dS = '
           f'{np.mean(rk_s):.3f} +/- {np.std(rk_s):.3f}  — dS = d<K>,')
     print('       the entanglement first law, measured.')
-    print(f'     Bekenstein bend (x > 4):            dK/dS = '
+    print(f'     Bekenstein regime (x > 4):          dK/dS = '
           f'{np.mean(rk_l):.2f} — the bound d<K> >= dS')
-    print('       opens as the state grows distinguishable; never once '
+    print('       widens as the state grows distinguishable; never once '
           'below 1')
     mn = min(p['dK'] - p['dS'] for p in pts)
     print(f'       (min dK - dS over all {len(pts)} points: {mn:+.4f} '
           'nats, i.e. >= 0 to the floor).')
     print()
 
-    print('[86] heat vs work — the price list (same packet, three ways):')
+    print('[86] heat versus work (same packet, three ways):')
     pure, mixed, lam_rows = price_list(H, C0, c0)
     peak = max(pure, key=lambda r: r[1])
     deep = [r for r in pure if r[0] >= 16]
@@ -482,23 +479,25 @@ def main():
     print(f'       modular energy keeps growing (dK/dS = '
           f'{pure[9][2] / pure[9][1]:.0f} at depth 4, '
           f'~{pure[12][2] / abs(pure[12][1]):.0e} at depth 12).')
-    print('       A pure lump is WORK: fully priced, entropy-free. (The')
-    print('       scalar\'s coherent kick, part 5 matter, gives dS = 0')
-    print('       identically — same lesson, zeroth order.)')
+    print('       A pure excitation is work-like: full modular energy, no')
+    print('       entropy. (A coherent displacement of the part-5 scalar')
+    print('       gives dS = 0 identically — the same statement.)')
     for lam, dS, h2 in lam_rows:
         print(f'     MIXED lam={lam:.2f}: dS = {dS:.5f} vs mixing entropy '
               f'h2 = {h2:.5f}  (match {dS / h2:.4f})')
     flat = [r[1] for r in mixed if r[0] >= 8]
     print(f'       and position-blind: dS = {np.mean(flat):.4f} +/- '
           f'{np.std(flat):.4f} across depths 8-32.')
-    print('       Classical uncertainty is charged as mixing, wherever '
-          'it sits.')
-    print('     Only HEAT is charged by the local Unruh clock — Clausius')
-    print('       wrote delta-Q, not delta-E, and the ledger agrees.')
+    print('       Classical uncertainty enters as mixing entropy, at any '
+          'position.')
+    print('     Only heat couples to the local Unruh temperature: the '
+          'first law is')
+    print('       a statement about delta-Q, not delta-E, as in '
+          'thermodynamics.')
     print()
 
-    print('[87] reading the landscape (two warm hills, +0.035 / +0.022,')
-    print('     on a T = 0.010 background; differences vs the background):')
+    print('[87] recovering the energy distribution (two warm regions,')
+    print('     +0.035 / +0.022 on a T = 0.010 background):')
     Tprof, e, cs, dSs, dKs, xs, ehat, etrue = landscape(H, w, v, c0)
     r_fwd = np.corrcoef(dSs, dKs)[0, 1]
     sel = dSs > 0.015
@@ -507,8 +506,8 @@ def main():
     print(f'     forward: delta-S(c) of a sliding interval vs '
           f'(2pi/v) sum beta*T00:')
     print(f'       r = {r_fwd:.4f}, mean dK/dS = {ratio:.3f} '
-          '(the ~x^2 correction of the curve,')
-    print('       not a fitted number — the kernel has no knobs).')
+          '(the ~x^2 correction of the curve;')
+    print('       the kernel has no fitted parameters).')
     print(f'     inverse: energy landscape read back from entropies '
           f'alone: r = {r_inv:.4f},')
     print(f'       recovered heat {ehat.sum():.4f} vs true '
@@ -516,18 +515,17 @@ def main():
           f'({100 * ehat.sum() / etrue.sum():.0f}%: the ~5% Bekenstein '
           'slack in reverse, the rest lost')
     print('       at the scan\'s edges).')
-    print('     The stress tensor is not extra data the renderer must '
-          'be told —')
-    print('       it is legible in the entropies. (Resolution ~ the '
-          'hill width:')
-    print('       soft heat cannot be localized below its own '
-          'wavelength.)')
+    print('     The energy distribution is recoverable from entropies '
+          'alone.')
+    print('       (Resolution ~ the width of the warm regions: thermal '
+          'perturbations')
+    print('       cannot be localized below their own wavelength.)')
     print()
 
-    print('[88] the depth law (the Jacobson-Faulkner turn):')
+    print('[88] the z^2 scaling (the Faulkner et al. correspondence):')
     dpts, slope, ref = depth_law(H, w, v, C0, c0)
     gpts = gapped_points(c0)
-    print(f'     small-x limb: dS ~ x^{slope:.2f} measured over '
+    print(f'     small-x region: dS ~ x^{slope:.2f} measured over '
           f'{len(dpts)} points')
     print(f'       (the exact curve\'s own slope over this window: '
           f'{ref:.2f}; pure limb: 2.00).')
@@ -542,17 +540,19 @@ def main():
     rgap = [dS / cft_curve(x) for x, dS in gpts]
     print(f'     controls: mass gap 0.5 -> the same probes fall to '
           f'{min(rgap):.2f}-{max(rgap):.2f} of the')
-    print('       curve (geometry frays beyond v/gap); the hard lumps '
-          'of [86] were')
-    print('       never on it. Only soft heat writes geometry.')
+    print('       curve (the correspondence fails beyond v/gap); the '
+          'localized')
+    print('       excitations of [86] never produce it. The '
+          'correspondence holds in')
+    print('       the thermal sector only.')
     print()
 
-    print('     verdict: the first law holds where Jacobson needs it,')
-    print('     the kernel is the Unruh clock, and its depth profile is')
-    print('     the linearized Einstein equation. Not postulated: read.')
-    print('     Owed above this camp: dynamics (time-dependent h),')
-    print('     flat-space asymptotics, and Newton\'s constant from the')
-    print('     cutoff. The summit is real but this rung holds weight.')
+    print('     summary: the first law holds in the thermal sector,')
+    print('     the modular kernel is the inverse Unruh temperature, and')
+    print('     the measured x^2 response corresponds to the linearized')
+    print('     Einstein equation through the RT dictionary. Still owed:')
+    print('     time-dependent dynamics, flat-space asymptotics, and')
+    print('     Newton\'s constant from the cutoff.')
 
     figure(pts, gpts, slope, ref, pure, mixed, Tprof, e, cs, dSs, dKs,
            xs, ehat, etrue, 'films/firstlaw.png')
