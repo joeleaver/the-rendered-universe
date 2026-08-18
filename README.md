@@ -2,7 +2,7 @@
 
 # The Rendered Universe
 
-**Twenty-nine runnable experiments on one hypothesis: the physical universe is
+**Thirty runnable experiments on one hypothesis: the physical universe is
 not a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
@@ -708,6 +708,44 @@ mass read off the screening cloud within 1% of the exact answer.*</sub>
 
 ---
 
+### 24 · Chirality, the hidden dimension, and the mirror
+
+The standing wall — chiral matter on a lattice — has a precise anatomy, and
+part 30 measures the two known halves of the escape. **The twin banished in
+space:** a 2D engine in a Chern phase hosts, on its 1D edge, a fermion with
+a single sign of velocity (measured: fifteen gap-crossing edge states,
+velocity −0.99, single-signed; the trivial-phase control has none). The
+doubling theorem's mandatory twin exists — on the *opposite edge*,
+separated in space rather than momentum. Chirality is an edge effect of a
+dimension the edge does not see. **The anomaly as bookkeeping:** threading
+one flux quantum through the cylinder pumps **exactly one electron**
+(δQ = ±1.000, adiabatically tracked) between the edges *through the bulk*
+— a lone chiral edge does not conserve charge, and this measured inflow is
+precisely why a gauge field cannot couple to one edge alone. **The mirror
+erased:** in the minimal exact setting (Fidkowski–Kitaev), symmetry
+forbids every mass at every count, symmetric interactions leave the
+Majorana mirror multiplet degenerate at n = 2, 4, 6 — and erase it
+completely at **n = 8** (gap 0.53, from exactly zero). The mirror can be
+removed if and only if the count is right. In 3+1 dimensions the magic
+count is **sixteen per generation** (the Wang–Wen route to a lattice
+Standard Model — a conjecture, cited as one): exactly the SO(10) register
+of part 11, *including the right-handed neutrino* this program
+independently flagged as its dark-matter hook. One count, three riddles.
+The residue, stated plainly: gauging the erased-mirror construction — a
+lattice chiral gauge theory — remains the field's open problem.
+
+<div align="center">
+<img src="films/chirality.png" width="820" alt="Chirality and the mirror">
+
+<sub>*One chiral branch per edge; one electron pumped through the bulk per
+flux quantum; and the mirror multiplet erased by interactions at count
+eight and only count eight.*</sub>
+</div>
+
+— [`chirality.py`](chirality.py)
+
+---
+
 ## Every experiment
 
 | Part | Script | The question it asks | Headline result | ~time |
@@ -749,6 +787,7 @@ mass read off the screening cloud within 1% of the exact answer.*</sub>
 | 27 | `knobs.py` | If every knob were tuned to observation, would the theory still predict? | Measured physics = 278 bits; a 3D binary engine holds 28 — tenfold overconstrained; freedom crosses the data between k = 4–5 (2D) and k = 2–3 (3D) | 1s |
 | 28 | `einstein.py` | Is Einstein's equation forced by the bookkeeping? | Area price 0.33 nats/length = 1/4G; no state beats the vacuum; conservation forces □h = 0 — while a shear-shaped operator measurably fails protection (r^−4, not r^−6) | 2m |
 | 29 | `schwinger.py` | Can the program host interacting matter? | Lattice QED: meson at M/e = 0.569 (exact: 0.564); confinement at tension 0.235 (classical 0.25); the string breaks by measured pair creation | 2m |
+| 30 | `chirality.py` | How close can an engine get to the weak force? | One-handed edge fermion (twin banished to the far edge); anomaly = 1 electron pumped through the bulk per flux quantum; the mirror erased at count 8 and only 8 | 30s |
 
 ## Quickstart
 
@@ -769,6 +808,7 @@ python3 graviton.py   # the twins: the slice datum the first law cannot see
 python3 knobs.py      # both sides of "tune every knob," measured in bits
 python3 einstein.py   # the forced equation: area price, equilibrium, protection
 python3 schwinger.py  # the first interacting engine: confinement and the meson
+python3 chirality.py  # the one-handed edge, the anomaly, and the erased mirror
 ```
 
 Parts 19–20 run offline from the committed reductions
@@ -780,7 +820,7 @@ the raw Planck/WMAP archives (~7 GB, URLs and SHA-256 recorded inside), run
 ## The paper
 
 **[The Rendered Universe (PDF)](writeup/the-rendered-universe.pdf)** — the full
-research report: abstract, claim taxonomy, twenty figures, an
+research report: abstract, claim taxonomy, twenty-one figures, an
 objections-and-replies section, and a reproducibility appendix. The HTML source
 is [`writeup/paper.html`](writeup/paper.html).
 
