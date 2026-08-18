@@ -2,7 +2,7 @@
 
 # The Rendered Universe
 
-**Twenty-four runnable experiments on one hypothesis: the physical universe is
+**Twenty-five runnable experiments on one hypothesis: the physical universe is
 not a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
@@ -486,7 +486,10 @@ Part 23's horizon radiated but never shrank, so its radiation entropy could
 only grow — Hawking's calculation, and his information paradox. Part 24 lets
 the hole evaporate, on the part-22 fermion chain (the flow is an imaginary
 second-neighbor hopping — a 1D type-II Weyl horizon), where evolution is
-exactly unitary and every entropy is exact. First, statistics: the same
+exactly unitary and every entropy is exact. The horizon's retreat is driven
+by the measured flux through an energy ledger, dM/dt = −F(t), with the
+hole's energy-per-length the one prescribed constant: the lifetime (t = 492)
+is measured, not scheduled. First, statistics: the same
 surface gravity that gave bosons a Planck spectrum gives fermions
 **Fermi–Dirac at the same κ/2π** (ratio 0.98 over two decades, particles and
 holes symmetric) — temperature from geometry, statistics from matter. A hole
@@ -494,16 +497,17 @@ only 20% past critical stops radiating above ~3 T<sub>H</sub>: the
 **trans-Planckian cutoff** of Corley–Jacobson, measured. Then the flow
 retreats, overtaking and releasing the stored partner quanta, and three
 curves are computed for the radiation entropy: the **exact** one (computable
-because the global state is pure) rises, turns over at t = 379, and returns
+because the global state is pure) rises, turns over at t = 359, and returns
 to zero — unitarity, verified to 10⁻¹²; the **extrapolation at the measured
-early rate** climbs to 10.2 nats and never turns — Hawking's curve; and the
+early rate** climbs to 7.9 nats and never turns — Hawking's curve; and the
 **island formula**, using one measured constant (μ = 0.36 nats per cut, the
 vacuum entanglement across one cut = the induced 1/4G of Susskind–Uglum),
-tracks the exact curve to 0.78 nats mean, its optimal island holding the
-partner quanta. Stated plainly in the output: the retreat schedule and the
-island rule itself are inputs, not derivations — real gravity justifies the
-latter via replica wormholes, and whether the universe's engine implements
-that identification remains the information-paradox question of the axiom
+tracks the exact curve to 0.51 nats mean, its optimal island holding the
+partner quanta. Stated plainly in the output: the hole's energy-per-length, the
+flow profile's shape, the cap on the late-time runaway, and the island rule
+itself are inputs, not derivations — real gravity justifies the island rule
+via replica wormholes, and whether the universe's engine implements that
+identification remains the information-paradox question of the axiom
 collider.
 
 <div align="center">
@@ -516,6 +520,35 @@ history.*</sub>
 </div>
 
 — [`page.py`](page.py)
+
+---
+
+### 19 · The first law in time
+
+Part 22 measured the entanglement first law on static states; part 25
+measures it in motion. A warm region on the critical fermion chain is
+released and splits into two thermal pulses: measured front speeds **2.00
+(energy) and 2.01 (entanglement)** against the Fermi velocity 2 — energy
+and entanglement share one light cone. The local first law
+ΔS = (2π/v)Σβ·ΔT₀₀ holds **at every time slice**: kernel prediction over
+measured entropy = 1.030 ± 0.004 across the run, with the same
+interval-size correction as the static case, and total energy conserved to
+numerical precision. Through the Ryu–Takayanagi dictionary this says the
+AdS₃ metric response tracks the boundary stress tensor slice by slice —
+correct for three-dimensional gravity, which has no propagating degrees of
+freedom (the fact that forced part 21 into 3+1 dimensions); causality is
+carried by the stress tensor itself. The propagating 3+1 version remains
+open, and the paper's section 6 says so.
+
+<div align="center">
+<img src="films/quench.png" width="820" alt="The time-dependent first law">
+
+<sub>*Energy and entanglement sharing one light cone, and the
+kernel-to-entropy ratio within a few percent of one at every time
+slice.*</sub>
+</div>
+
+— [`quench.py`](quench.py)
 
 ---
 
@@ -554,7 +587,8 @@ history.*</sub>
 | 21 | `shear.py` | Can the surviving (tensor) gravity be built? | +/× ring patterns; silent monopole (exact); light bends 1.93× Newton (GR: 2) | 75s |
 | 22 | `firstlaw.py` | Does the entanglement first law yield Einstein's equation? | First law measured (0.98±0.04); holds for heat, not work; x² scaling = the z² Einstein profile (AdS₃) | 8s |
 | 23 | `horizon.py` | Do clocks, black holes, and Hawking radiation follow? | Dilation on GR curves (no fits); a frozen star that reflects; steady Hawking flux at 0.94×κ/2π, partners resolved, state pure | 37s |
-| 24 | `page.py` | Does an evaporating horizon obey the Page curve? | Exact entropy: rise, turnover, return to zero; island formula tracks it to 0.8 nats with a measured 1/4G | 3m |
+| 24 | `page.py` | Does an evaporating horizon obey the Page curve? | Exact entropy: rise, turnover, return to zero; flux-driven retreat; island formula tracks it to 0.5 nats with a measured 1/4G | 3m |
+| 25 | `quench.py` | Does the first law hold in time? | Energy and entanglement share one light cone (2.00/2.01 vs v_F = 2); kernel/entropy = 1.030±0.004 at every slice | 10s |
 
 ## Quickstart
 
@@ -570,6 +604,7 @@ python3 echo.py       # the registered test, asked of E-mode polarization
 python3 firstlaw.py   # the entanglement first law, and Einstein in its limb
 python3 horizon.py    # clocks, a black hole, and Hawking radiation
 python3 page.py       # an evaporating horizon and the Page curve
+python3 quench.py     # the entanglement first law, time-resolved
 ```
 
 Parts 19–20 run offline from the committed reductions
@@ -581,7 +616,7 @@ the raw Planck/WMAP archives (~7 GB, URLs and SHA-256 recorded inside), run
 ## The paper
 
 **[The Rendered Universe (PDF)](writeup/the-rendered-universe.pdf)** — the full
-research report: abstract, claim taxonomy, fifteen figures, an
+research report: abstract, claim taxonomy, sixteen figures, an
 objections-and-replies section, and a reproducibility appendix. The HTML source
 is [`writeup/paper.html`](writeup/paper.html).
 
