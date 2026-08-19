@@ -2,7 +2,7 @@
 
 # The Rendered Universe
 
-**Thirty-one runnable experiments on one hypothesis: the physical universe is
+**Thirty-two runnable experiments on one hypothesis: the physical universe is
 not a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
@@ -785,6 +785,47 @@ charge; and the gamble's scorecard.*</sub>
 
 ---
 
+### 26 · The tensor engine
+
+Part 31 priced the chiral frontier at forty fermion modes against exact
+diagonalization's twenty-four. Part 32 builds the instrument that crosses
+such walls: a **matrix-product-state engine** — an MPO compiler (batched
+direct-sum with exact SVD compression: long-range terms cost nothing
+special; it discovers the Schwinger Coulomb tail's bond-dimension-5 form
+by itself) and two-site DMRG with penalty-projected excited states — numpy
+only, like everything else here ([`observatory/mps.py`](observatory/mps.py)).
+Validated against every exact answer the repo owns: transverse-field Ising
+to 10⁻⁸ at import; the part-29 **Schwinger meson gap reproduced to all
+four printed decimals** at N = 12 and N = 20, in seconds where the ED took
+minutes. Beyond the wall: the meson-gap sequences continue smoothly to
+**N = 40 at three physical volumes** — raw values approach the exact
+e/√π = 0.5642 from above (finest 0.689), the double-linear extrapolation
+overcorrects below (0.46, the open-boundary systematic, stated), and the
+N = 40 screening fit gives 0.537 to complement part 29's 0.569: **the
+exact answer is now bracketed from both sides**. Then the door itself: the
+tangent-fermion 3-4-5-0 lattice of the recent symmetric-mass-generation
+demonstration, implemented exactly — free sector matching the analytic
+tangent sea to six decimals (a single chiral branch per flavor:
+nonlocality is the doubling theorem's other loophole) — and its
+interacting spectrum solved exactly at L = 4: **unique symmetric ground
+state, gap 1.83 vs the free 1.66, no condensate** — the first exact
+interacting-3450 numbers in the repo. The boundary, measured: the free
+sea's entanglement lower bound crosses the numpy ceiling by L ~ 8 (the
+published run needed bond dimension 16,384 at L ~ 20). The door is built,
+hinged, and priced in bond dimensions.
+
+<div align="center">
+<img src="films/dmrg.png" width="820" alt="The tensor engine">
+
+<sub>*Meson-gap sequences continuing through the ED wall and bracketing
+the exact answer; the interacting 3450's unique symmetric gap at L = 4;
+and the measured price of walking through the door at full size.*</sub>
+</div>
+
+— [`dmrg.py`](dmrg.py)
+
+---
+
 ## Every experiment
 
 | Part | Script | The question it asks | Headline result | ~time |
@@ -828,6 +869,7 @@ charge; and the gamble's scorecard.*</sub>
 | 29 | `schwinger.py` | Can the program host interacting matter? | Lattice QED: meson at M/e = 0.569 (exact: 0.564); confinement at tension 0.235 (classical 0.25); the string breaks by measured pair creation | 2m |
 | 30 | `chirality.py` | How close can an engine get to the weak force? | One-handed edge fermion (twin banished to the far edge); anomaly = 1 electron pumped through the bulk per flux quantum; the mirror erased at count 8 and only 8 | 30s |
 | 31 | `thooft.py` | Does the anomaly decide which matter can be erased? | Gapping pairs ⟺ anomaly-free (4,290 assignments, 0 exceptions); local spectra measurably charge-blind (ΔE < 10⁻¹³); the dynamical test priced at 40 modes vs ED's 24 | 45s |
+| 32 | `dmrg.py` | Can the program cross the exact-diagonalization wall? | MPS engine validated to 4 decimals; Schwinger sequences to N = 40 bracket e/√π; the chiral 3450 solved exactly at small size (unique symmetric gap 1.83); full size priced at χ = 16,384 | 15s |
 
 ## Quickstart
 
@@ -850,6 +892,7 @@ python3 einstein.py   # the forced equation: area price, equilibrium, protection
 python3 schwinger.py  # the first interacting engine: confinement and the meson
 python3 chirality.py  # the one-handed edge, the anomaly, and the erased mirror
 python3 thooft.py     # the gamble: the anomaly decides, measured exhaustively
+python3 dmrg.py       # the tensor engine, validated, and the door it opens
 ```
 
 Parts 19–20 run offline from the committed reductions
@@ -861,7 +904,7 @@ the raw Planck/WMAP archives (~7 GB, URLs and SHA-256 recorded inside), run
 ## The paper
 
 **[The Rendered Universe (PDF)](writeup/the-rendered-universe.pdf)** — the full
-research report: abstract, claim taxonomy, twenty-two figures, an
+research report: abstract, claim taxonomy, twenty-three figures, an
 objections-and-replies section, and a reproducibility appendix. The HTML source
 is [`writeup/paper.html`](writeup/paper.html).
 
@@ -895,7 +938,8 @@ physicist/    the observer: forbidden by tests/test_firewall.py from
               importing engine or render — knows only frames
 observatory/  research instruments: causal geometry, Gaussian-state
               entanglement, curved-space rulers, spherical harmonics,
-              FITS/HEALPix reading and spin-2 (polarization) harmonics
+              FITS/HEALPix reading, spin-2 (polarization) harmonics,
+              and a matrix-product-state engine (MPO compiler + DMRG)
               — all hand-rolled, all validated at import
 data/         the real sky, reduced: T and E/B a_lm of Planck 2018 x4
               (+ WMAP9 temperature) with URL + SHA-256 provenance
