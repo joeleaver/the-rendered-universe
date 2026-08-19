@@ -2,7 +2,7 @@
 
 # The Rendered Universe
 
-**Thirty-two runnable experiments on one hypothesis: the physical universe is
+**Thirty-three runnable experiments on one hypothesis: the physical universe is
 not a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
@@ -826,6 +826,44 @@ and the measured price of walking through the door at full size.*</sub>
 
 ---
 
+### 27 · Through the door
+
+With the numpy-only constraint lifted, a production tensor backend (TeNPy,
+in an optional `.venv-tensor` environment — every other part still runs on
+numpy alone) carries the chiral 3450 model past exact diagonalization. Its
+first result was not physics but a **correction, reported as the result it
+is**: the backend's first converged energy came out *below* part 32's
+exact diagonalization — variationally impossible — and the audit that
+followed (every term family compared element by element; a
+gauge-equivalence theorem verified by independent diagonalization;
+finally a block-closure check that found **96 transitions leaking out of
+the fixed-N sector**) traced the impossibility to a **dagger dropped in
+the arXiv HTML rendering** of the second gapping interaction, silently
+hidden by the fixed-number projection. Part 31's null vectors dictate the
+repair (l₁ = (2,1,2,1): ann{3,3,4} → cre{5,5,0}), and with the dagger
+restored the leaks are zero and **backend and exact diagonalization agree
+to six decimals** on both sectors (free −22.627417; interacting
+−29.271549, gap 1.8305). The new instrument's first discovery was a bug
+in our own transcription — the honest-accounting loop, closed across
+three parts. The physics at the confirmed size: **the interacting gap
+1.831 exceeds the exact free gap 1.657 with every bilinear mass
+charge-forbidden** — mass from interactions alone, digit-for-digit
+between two independent methods — while the free gap collapses as
+4 tan(π/2L); the larger-L points run in a standing background job, to be
+reported when converged rather than waited on.
+
+<div align="center">
+<img src="films/smg.png" width="820" alt="Through the door">
+
+<sub>*The free gap collapsing toward zero with the interacting gap above
+it at the exactly-confirmed size, and the correction saga in numbers:
+impossibility, audit, dagger, six-decimal agreement.*</sub>
+</div>
+
+— [`smg.py`](smg.py)
+
+---
+
 ## Every experiment
 
 | Part | Script | The question it asks | Headline result | ~time |
@@ -870,10 +908,14 @@ and the measured price of walking through the door at full size.*</sub>
 | 30 | `chirality.py` | How close can an engine get to the weak force? | One-handed edge fermion (twin banished to the far edge); anomaly = 1 electron pumped through the bulk per flux quantum; the mirror erased at count 8 and only 8 | 30s |
 | 31 | `thooft.py` | Does the anomaly decide which matter can be erased? | Gapping pairs ⟺ anomaly-free (4,290 assignments, 0 exceptions); local spectra measurably charge-blind (ΔE < 10⁻¹³); the dynamical test priced at 40 modes vs ED's 24 | 45s |
 | 32 | `dmrg.py` | Can the program cross the exact-diagonalization wall? | MPS engine validated to 4 decimals; Schwinger sequences to N = 40 bracket e/√π; the chiral 3450 solved exactly at small size (unique symmetric gap 1.83); full size priced at χ = 16,384 | 15s |
+| 33 | `smg.py` | Does the door open — and does the pipeline survive contact with a production backend? | The backend's first energy exposed a dropped dagger in the source's HTML (96 block leaks); corrected, it agrees with ED to six decimals; interacting gap 1.83 > free 1.66 with all masses charge-forbidden | 2m |
 
 ## Quickstart
 
-Requirements: Python 3.12+, `numpy`, `pillow`. Nothing else. Every experiment is
+Requirements: Python 3.12+, `numpy`, `pillow`. Nothing else — every part
+through 32, and part 33's default run, need only that. (Part 33's optional
+tensor-backend runs use TeNPy in a virtualenv: `python3 -m venv .venv-tensor
+&& .venv-tensor/bin/pip install physics-tenpy pillow`.) Every experiment is
 a standalone script that prints a lab-notebook narrative and writes its figures
 and films to [`films/`](films/).
 
@@ -893,6 +935,7 @@ python3 schwinger.py  # the first interacting engine: confinement and the meson
 python3 chirality.py  # the one-handed edge, the anomaly, and the erased mirror
 python3 thooft.py     # the gamble: the anomaly decides, measured exhaustively
 python3 dmrg.py       # the tensor engine, validated, and the door it opens
+python3 smg.py        # through the door: the correction saga and the SMG gap
 ```
 
 Parts 19–20 run offline from the committed reductions
@@ -904,7 +947,7 @@ the raw Planck/WMAP archives (~7 GB, URLs and SHA-256 recorded inside), run
 ## The paper
 
 **[The Rendered Universe (PDF)](writeup/the-rendered-universe.pdf)** — the full
-research report: abstract, claim taxonomy, twenty-three figures, an
+research report: abstract, claim taxonomy, twenty-four figures, an
 objections-and-replies section, and a reproducibility appendix. The HTML source
 is [`writeup/paper.html`](writeup/paper.html).
 
