@@ -146,8 +146,14 @@ def model_terms(L, g1, g2, UH, lam=6.0):
         n1 = (n + 1) % L
         seq1 = [(jw(n, 0), 'c'), (jw(n, 1), 'c+'), (jw(n1, 1), 'c+'),
                 (jw(n, 2), 'c'), (jw(n, 3), 'c'), (jw(n1, 3), 'c+')]
+        # note: the arXiv HTML rendering drops the dagger on the last
+        # operator; the null-vector bookkeeping of part 31 fixes it —
+        # l1 = (2,1,2,1) demands ann{3,3,4} -> cre{5,5,0}, number-
+        # conserving. (The mis-transcribed term was caught when TeNPy
+        # legitimately found a lower ground state than a fixed-N
+        # exact diagonalization: the projection was silently wrong.)
         seq2 = [(jw(n, 0), 'c'), (jw(n1, 0), 'c'), (jw(n, 1), 'c'),
-                (jw(n, 2), 'c+'), (jw(n1, 2), 'c+'), (jw(n, 3), 'c')]
+                (jw(n, 2), 'c+'), (jw(n1, 2), 'c+'), (jw(n, 3), 'c+')]
         for g, seq in ((g1, seq1), (g2, seq2)):
             if abs(g) < 1e-14:
                 continue
