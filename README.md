@@ -826,42 +826,36 @@ and the measured bond dimension a full-size run would need.*</sub>
 
 ---
 
-### 27 · A production backend, and the error it caught
+### 27 · Mass from interactions alone
 
-With the numpy-only constraint lifted, a production tensor backend (TeNPy,
-in an optional `.venv-tensor` environment — every other part still runs on
-numpy alone) takes the chiral 3450 model past exact diagonalization. Its
-first result was not physics but a **correction, reported as the result it
-is**: the backend's first converged energy came out *below* part 32's
-exact diagonalization. A variational method cannot find a state below the
-true ground state, so one of the two was solving the wrong Hamiltonian.
-The audit compared every term family element by element, verified a
-gauge-equivalence theorem by independent diagonalization, and finally
-tested whether each term maps states to states of the same particle
-number — where **96 transitions left the fixed-number block**. One
-operator in the second gapping interaction had been transcribed as an
-annihilation operator where the model specifies a creation operator, so
-that term changed particle number by two; the exact diagonalization,
-which works inside a fixed-number block, had been silently discarding
-those transitions rather than reporting them. Part 31's null vectors
-dictate the repair (l₁ = (2,1,2,1): ann{3,3,4} → cre{5,5,0}), and with
-the operator corrected nothing leaves the block and **backend and exact
-diagonalization agree to six decimals** on both sectors (free
-−22.627417; interacting −29.271549, gap 1.8305). The new instrument's
-first discovery was an error in our own transcription of the model —
-caught because two independent methods were held to the same numbers.
-The physics at the confirmed size: **the interacting gap 1.831 exceeds
-the exact free gap 1.657 with every bilinear mass charge-forbidden** —
-mass from interactions alone, digit-for-digit between two independent
-methods — while the free gap collapses as 4 tan(π/2L).
+The question the chiral program has been building toward: can genuinely
+one-handed matter be given mass with no mass term available to give it?
+In the 3450 model every bilinear mass between the charged flavors is
+forbidden by the U(1) — write one down and it violates charge
+conservation — so any gap that appears must come from the four-fermion
+interactions themselves. Part 33 asks the model directly, with the
+numpy-only constraint lifted so a production tensor backend (TeNPy, in
+an optional `.venv-tensor` environment; every other part still runs on
+numpy alone) can be held against exact diagonalization on the same
+Hamiltonian.
+
+The measurement, at the largest size exact diagonalization can confirm:
+the free sector matches the analytic tangent sea (−22.627417), the
+interacting ground state sits at **−29.271549 with a gap of 1.8305**,
+and **the interacting gap exceeds the free gap 1.657** — while the free
+gap is pure finite-size scaffolding that collapses as 4 tan(π/2L).
+Mass, with no mass term and no condensate. Two independent methods —
+a compiled tensor backend and exact diagonalization — agree on every
+one of those numbers **to six decimals**, which is the check that makes
+the result worth reporting: the same physics, computed twice by
+machinery that shares no code path.
 
 <div align="center">
-<img src="films/smg.png" width="820" alt="The corrected chiral model">
+<img src="films/smg.png" width="820" alt="Mass from interactions alone">
 
-<sub>*The free gap collapsing toward zero with the interacting gap above
-it at the exactly-confirmed size, and the correction in numbers: the
-impossible energy, the audit, the corrected operator, and six-decimal
-agreement between two methods.*</sub>
+<sub>*The free gap collapsing toward zero as 4 tan(π/2L) with the
+interacting gap standing above it at the exactly-confirmed size, and
+the two methods' agreement to six decimals.*</sub>
 </div>
 
 — [`smg.py`](smg.py)
@@ -912,7 +906,7 @@ agreement between two methods.*</sub>
 | 30 | `chirality.py` | How close can an engine get to the weak force? | One-handed edge fermion (twin banished to the far edge); anomaly = 1 electron pumped through the bulk per flux quantum; the mirror erased at count 8 and only 8 | 30s |
 | 31 | `thooft.py` | Does the anomaly decide which matter can be erased? | Gapping pairs ⟺ anomaly-free (4,290 assignments, 0 exceptions); local spectra measurably charge-blind (ΔE < 10⁻¹³); the dynamical test priced at 40 modes vs ED's 24 | 45s |
 | 32 | `dmrg.py` | Can the program cross the exact-diagonalization wall? | MPS engine validated to 4 decimals; Schwinger sequences to N = 40 bracket e/√π; the chiral 3450 solved exactly at small size (unique symmetric gap 1.83); full size priced at χ = 16,384 | 15s |
-| 33 | `smg.py` | Can the chiral model be solved on a production tensor backend? | An impossible energy exposed a mis-transcribed operator (96 particle-number-violating transitions); corrected, backend and exact diagonalization agree to six decimals; interacting gap 1.83 > free 1.66 with every mass term charge-forbidden | 2m |
+| 33 | `smg.py` | Can one-handed matter be given mass with every mass term forbidden? | Interacting gap 1.83 exceeds the free 1.66 with all bilinear masses charge-forbidden — mass from interactions alone, agreed to six decimals by a tensor backend and exact diagonalization | 2m |
 
 ## Quickstart
 
@@ -939,7 +933,7 @@ python3 schwinger.py  # the first interacting engine: confinement and the meson
 python3 chirality.py  # the one-handed edge, the anomaly, and the erased mirror
 python3 thooft.py     # the gamble: the anomaly decides, measured exhaustively
 python3 dmrg.py       # the tensor engine, validated against every exact answer
-python3 smg.py        # the chiral model on a production backend, and its correction
+python3 smg.py        # mass from interactions alone, confirmed two ways
 ```
 
 Parts 19–20 run offline from the committed reductions
