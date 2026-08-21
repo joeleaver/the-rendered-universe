@@ -2,7 +2,7 @@
 
 # The Rendered Universe
 
-**Thirty-three runnable experiments on one hypothesis: the physical universe is
+**Thirty-four runnable experiments on one hypothesis: the physical universe is
 not a simulation — it is the *render output* of one.**
 
 Particles are pixels. You can observe them and infer the rules of the rendering,
@@ -862,6 +862,61 @@ the two methods' agreement to six decimals.*</sub>
 
 ---
 
+### 28 · The lowest excitation is charged
+
+Part 31 priced a faithful chiral test at forty fermion modes against
+exact diagonalization's twenty-four. Part 34 notices that L = 6 of the
+3450 model *is* twenty-four modes — and that the model conserves two
+quantities, particle number and the U(1) charge, so the physical block
+at half filling and neutral charge holds 237,400 states rather than
+2²⁴. That block is small enough for a sparse Lanczos in numpy: about a
+minute for the wall exact diagonalization was supposed to be unable to
+reach. **E₀ = −49.281566, first neutral excited state −47.861311, gap
+1.4203**, against a free sea of exactly −40 and a free gap of exactly
+4 tan(π/12).
+
+Then the finding, which arrived as an apparent malfunction. The
+compiled backend kept returning a first excited state at an energy the
+neutral sector does not contain — twice, from two unrelated algorithms,
+agreeing to six decimals. Widening the exact diagonalization to every
+charge sector found it: **the true first excitation of this model is
+charged.** Moving one fermion from the q = 0 flavor to the q = 3 flavor
+costs **1.2776 at L = 4 and 0.8466 at L = 6** — below the neutral gaps
+of 1.8305 and 1.4203 at both sizes. Every instrument in parts 32 and 33
+had been pinned to the neutral sector and was structurally incapable of
+seeing it. Whether this excitation is physical depends on what the
+symmetry is: gauge the U(1) and Gauss's law confines these states out
+of the spectrum (part 29's mechanism), but in the global-symmetry model
+that everyone actually simulates, it is the lowest thing there is.
+
+The two channels then behave oppositely as the lattice grows. The
+neutral gap **pulls away** from the collapsing free gap (1.105 → 1.325
+in ratio); the charged one **tracks** it (0.771 → 0.790). Read
+naively, one is mass and the other is finite-size scaffolding — but
+these are two points, and two points cannot tell a trend from a
+coincidence, so no conclusion is drawn here. Extending that table is
+what the compute this part did not have would buy.
+
+What the interaction does to the ground state is measured directly:
+the momentum occupation's Fermi step erodes from 1 to **0.49** without
+vanishing, the propagator falls from 0.333 to 0.238, and the state
+gives up 5.9 units of the free sea's kinetic energy to buy 15.2 of
+interaction energy. Mass forms while every bilinear mass term stays
+charge-forbidden and the solver conserves charge exactly, so no
+condensate channel is even open: the gap lives in the correlations.
+
+<div align="center">
+<img src="films/massgap.png" width="820" alt="The lowest excitation is charged">
+
+<sub>*The two channels against the collapsing free gap; the gap-to-free
+ratio as one dial scales the whole interaction; and the Fermi step
+eroding without closing.*</sub>
+</div>
+
+— [`massgap.py`](massgap.py)
+
+---
+
 ## Every experiment
 
 | Part | Script | The question it asks | Headline result | ~time |
@@ -907,6 +962,7 @@ the two methods' agreement to six decimals.*</sub>
 | 31 | `thooft.py` | Does the anomaly decide which matter can be erased? | Gapping pairs ⟺ anomaly-free (4,290 assignments, 0 exceptions); local spectra measurably charge-blind (ΔE < 10⁻¹³); the dynamical test priced at 40 modes vs ED's 24 | 45s |
 | 32 | `dmrg.py` | Can the program cross the exact-diagonalization wall? | MPS engine validated to 4 decimals; Schwinger sequences to N = 40 bracket e/√π; the chiral 3450 solved exactly at small size (unique symmetric gap 1.83); full size priced at χ = 16,384 | 15s |
 | 33 | `smg.py` | Can one-handed matter be given mass with every mass term forbidden? | Interacting gap 1.83 exceeds the free 1.66 with all bilinear masses charge-forbidden — mass from interactions alone, agreed to six decimals by a tensor backend and exact diagonalization | 2m |
+| 34 | `massgap.py` | What is the lowest excitation of the chiral model — and does the gap survive scaling? | The wall itself diagonalized exactly (L = 6, 237,400 states, gap 1.4203); the true first excitation is **charged** (0.85 at L = 6, below the neutral gap) and was invisible to every sector-pinned instrument; Fermi step erodes 1 → 0.49 without closing | 2m |
 
 ## Quickstart
 
@@ -934,6 +990,7 @@ python3 chirality.py  # the one-handed edge, the anomaly, and the erased mirror
 python3 thooft.py     # the gamble: the anomaly decides, measured exhaustively
 python3 dmrg.py       # the tensor engine, validated against every exact answer
 python3 smg.py        # mass from interactions alone, confirmed two ways
+python3 massgap.py    # the wall diagonalized, and the charged excitation below the gap
 ```
 
 Parts 19–20 run offline from the committed reductions
