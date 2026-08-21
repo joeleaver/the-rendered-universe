@@ -802,8 +802,8 @@ minutes. Beyond the wall: the meson-gap sequences continue smoothly to
 e/√π = 0.5642 from above (finest 0.689), the double-linear extrapolation
 overcorrects below (0.46, the open-boundary systematic, stated), and the
 N = 40 screening fit gives 0.537 to complement part 29's 0.569: **the
-exact answer is now bracketed from both sides**. Then the door itself: the
-tangent-fermion 3-4-5-0 lattice of the recent symmetric-mass-generation
+exact answer is now bracketed from both sides**. Then the chiral model
+itself: the tangent-fermion 3-4-5-0 lattice of the recent symmetric-mass-generation
 demonstration, implemented exactly — free sector matching the analytic
 tangent sea to six decimals (a single chiral branch per flavor:
 nonlocality is the doubling theorem's other loophole) — and its
@@ -811,53 +811,57 @@ interacting spectrum solved exactly at L = 4: **unique symmetric ground
 state, gap 1.83 vs the free 1.66, no condensate** — the first exact
 interacting-3450 numbers in the repo. The boundary, measured: the free
 sea's entanglement lower bound crosses the numpy ceiling by L ~ 8 (the
-published run needed bond dimension 16,384 at L ~ 20). The door is built,
-hinged, and priced in bond dimensions.
+published run needed bond dimension 16,384 at L ~ 20). The instrument
+works; reaching full size is priced in bond dimensions.
 
 <div align="center">
 <img src="films/dmrg.png" width="820" alt="The tensor engine">
 
 <sub>*Meson-gap sequences continuing through the ED wall and bracketing
 the exact answer; the interacting 3450's unique symmetric gap at L = 4;
-and the measured price of walking through the door at full size.*</sub>
+and the measured bond dimension a full-size run would need.*</sub>
 </div>
 
 — [`dmrg.py`](dmrg.py)
 
 ---
 
-### 27 · Through the door
+### 27 · A production backend, and the error it caught
 
 With the numpy-only constraint lifted, a production tensor backend (TeNPy,
 in an optional `.venv-tensor` environment — every other part still runs on
-numpy alone) carries the chiral 3450 model past exact diagonalization. Its
+numpy alone) takes the chiral 3450 model past exact diagonalization. Its
 first result was not physics but a **correction, reported as the result it
 is**: the backend's first converged energy came out *below* part 32's
-exact diagonalization — variationally impossible — and the audit that
-followed (every term family compared element by element; a
-gauge-equivalence theorem verified by independent diagonalization;
-finally a block-closure check that found **96 transitions leaking out of
-the fixed-N sector**) traced the impossibility to a **dagger dropped in
-the arXiv HTML rendering** of the second gapping interaction, silently
-hidden by the fixed-number projection. Part 31's null vectors dictate the
-repair (l₁ = (2,1,2,1): ann{3,3,4} → cre{5,5,0}), and with the dagger
-restored the leaks are zero and **backend and exact diagonalization agree
-to six decimals** on both sectors (free −22.627417; interacting
-−29.271549, gap 1.8305). The new instrument's first discovery was a bug
-in our own transcription — the honest-accounting loop, closed across
-three parts. The physics at the confirmed size: **the interacting gap
-1.831 exceeds the exact free gap 1.657 with every bilinear mass
-charge-forbidden** — mass from interactions alone, digit-for-digit
-between two independent methods — while the free gap collapses as
-4 tan(π/2L); the larger-L points run in a standing background job, to be
-reported when converged rather than waited on.
+exact diagonalization. A variational method cannot find a state below the
+true ground state, so one of the two was solving the wrong Hamiltonian.
+The audit compared every term family element by element, verified a
+gauge-equivalence theorem by independent diagonalization, and finally
+tested whether each term maps states to states of the same particle
+number — where **96 transitions left the fixed-number block**. One
+operator in the second gapping interaction had been transcribed as an
+annihilation operator where the model specifies a creation operator, so
+that term changed particle number by two; the exact diagonalization,
+which works inside a fixed-number block, had been silently discarding
+those transitions rather than reporting them. Part 31's null vectors
+dictate the repair (l₁ = (2,1,2,1): ann{3,3,4} → cre{5,5,0}), and with
+the operator corrected nothing leaves the block and **backend and exact
+diagonalization agree to six decimals** on both sectors (free
+−22.627417; interacting −29.271549, gap 1.8305). The new instrument's
+first discovery was an error in our own transcription of the model —
+caught because two independent methods were held to the same numbers.
+The physics at the confirmed size: **the interacting gap 1.831 exceeds
+the exact free gap 1.657 with every bilinear mass charge-forbidden** —
+mass from interactions alone, digit-for-digit between two independent
+methods — while the free gap collapses as 4 tan(π/2L).
 
 <div align="center">
-<img src="films/smg.png" width="820" alt="Through the door">
+<img src="films/smg.png" width="820" alt="The corrected chiral model">
 
 <sub>*The free gap collapsing toward zero with the interacting gap above
-it at the exactly-confirmed size, and the correction saga in numbers:
-impossibility, audit, dagger, six-decimal agreement.*</sub>
+it at the exactly-confirmed size, and the correction in numbers: the
+impossible energy, the audit, the corrected operator, and six-decimal
+agreement between two methods.*</sub>
 </div>
 
 — [`smg.py`](smg.py)
@@ -908,7 +912,7 @@ impossibility, audit, dagger, six-decimal agreement.*</sub>
 | 30 | `chirality.py` | How close can an engine get to the weak force? | One-handed edge fermion (twin banished to the far edge); anomaly = 1 electron pumped through the bulk per flux quantum; the mirror erased at count 8 and only 8 | 30s |
 | 31 | `thooft.py` | Does the anomaly decide which matter can be erased? | Gapping pairs ⟺ anomaly-free (4,290 assignments, 0 exceptions); local spectra measurably charge-blind (ΔE < 10⁻¹³); the dynamical test priced at 40 modes vs ED's 24 | 45s |
 | 32 | `dmrg.py` | Can the program cross the exact-diagonalization wall? | MPS engine validated to 4 decimals; Schwinger sequences to N = 40 bracket e/√π; the chiral 3450 solved exactly at small size (unique symmetric gap 1.83); full size priced at χ = 16,384 | 15s |
-| 33 | `smg.py` | Does the door open — and does the pipeline survive contact with a production backend? | The backend's first energy exposed a dropped dagger in the source's HTML (96 block leaks); corrected, it agrees with ED to six decimals; interacting gap 1.83 > free 1.66 with all masses charge-forbidden | 2m |
+| 33 | `smg.py` | Can the chiral model be solved on a production tensor backend? | An impossible energy exposed a mis-transcribed operator (96 particle-number-violating transitions); corrected, backend and exact diagonalization agree to six decimals; interacting gap 1.83 > free 1.66 with every mass term charge-forbidden | 2m |
 
 ## Quickstart
 
@@ -934,8 +938,8 @@ python3 einstein.py   # the forced equation: area price, equilibrium, protection
 python3 schwinger.py  # the first interacting engine: confinement and the meson
 python3 chirality.py  # the one-handed edge, the anomaly, and the erased mirror
 python3 thooft.py     # the gamble: the anomaly decides, measured exhaustively
-python3 dmrg.py       # the tensor engine, validated, and the door it opens
-python3 smg.py        # through the door: the correction saga and the SMG gap
+python3 dmrg.py       # the tensor engine, validated against every exact answer
+python3 smg.py        # the chiral model on a production backend, and its correction
 ```
 
 Parts 19–20 run offline from the committed reductions
